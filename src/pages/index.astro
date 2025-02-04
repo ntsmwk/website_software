@@ -4,22 +4,22 @@ import HorizontalCard from "../components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
 import createSlug from "../lib/createSlug";
 
-const posts = (await getCollection("blog")).sort(
+/* const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-const last_posts = posts.slice(0, 3);
+const last_posts = posts.slice(0, 3); */
 ---
 
 <BaseLayout sideBarActiveItemID="home">
-  <div class="pb-12 mt-5">
+  <div class="mt-5">
     <div class="text-5xl font-bold">DI Markus Weißenbek</div>
     <div class="text-3xl py-3 font-bold">
       Software Architekt | Senior Software Engineer
     </div>
     <div class="py-2">
       <text class="text-lg">
-        <p class="text-justify">
+        <p class="text-justify py-2">
           Selbstständiger <strong>Software Architekt</strong> und <strong
             >Senior Software Engineer
           </strong> im Web-Bereich. Seit mehr als 10 Jahren beschäftige ich mich
@@ -27,7 +27,7 @@ const last_posts = posts.slice(0, 3);
           und langfristig zu betreuen. Meine Kern-Kompetenz liegt vor allem in der
           Kombination von Technik, Wirtschaft und Team.
 
-          <div class="divider my-0"></div>
+          <div class="divider my-2"></div>
           Meine Grundphilosophie im Leben wie auch im Beruf ist klassisch oberösterreichisch
           ”Geht ned, gibts ned!”.
         </p>
@@ -35,33 +35,42 @@ const last_posts = posts.slice(0, 3);
     </div>
   </div>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-2">Projekte {"</>"}</div>
+  <div class="mt-12">
+    <div class="text-3xl w-full font-bold mb-2">Letzte Projekte {"</>"}</div>
   </div>
 
   <HorizontalCard
     title="Energiewirtschaftlicher Datenaustauschdienst GmbH"
     img="/EDA.webp"
-    desc="Als Partner der EDA haben ich und mein Team eine maßgeschneiderte Plattform zur Verwaltung der Energiemarktteilnehmer (Netzbetreiber, Strom- & Gas-Lieferanten, etc.) entwickelt."
-    url="#"
+    desc="Maßgeschneiderte Plattform zur Verwaltung der Energiemarktteilnehmer (Netzbetreiber, Strom- & Gas-Lieferanten, etc.) inkl. Anbindung (Ponton / AS4) an die Peer-2-Peer Datenautausch-Infrastruktur."
+    url="/eda"
   />
   <div class="divider my-0"></div>
   <HorizontalCard
     title="Single Digital Gateway (SDG)"
     img="/EU.webp"
     desc="EU-Projekt mit dem Ziel öffentliche Dienste und Informationen über alle Mitgliedstaaten hinweg zugänglich und nutzbar zu machen."
-    url="#"
+    url="/sdg"
   />
   <div class="divider my-0"></div>
   <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
+    title="Portfolio Assistent"
+    img="/PA.png"
+    desc="Plattform zur Digitalisierung und Verwaltung von Immobilien-Portfolios basierend auf dem Energieausweiß."
+    url="/pa"
   />
+  <div class="flex justify-end mt-4">
+    <a
+      class="btn btn-lg bg-orange-500 hover:bg-orange-800 rounded-full"
+      href="/projects">Alle Projekte</a
+    >
+  </div>
 
-  <div>
+  <div class="mt-12">
+    <div class="text-3xl w-full font-bold mb-2 mt-12">Technologien</div>
+  </div>
+
+  <!-- <div>
     <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
   </div>
 
@@ -79,5 +88,5 @@ const last_posts = posts.slice(0, 3);
         <div class="divider my-0" />
       </>
     ))
-  }
+  } -->
 </BaseLayout>
