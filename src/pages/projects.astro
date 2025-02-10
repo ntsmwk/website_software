@@ -3,49 +3,171 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
 ---
 
-<BaseLayout title = "Projects" sideBarActiveItemID="projects">
+<BaseLayout title="Projects" sideBarActiveItemID="projects">
   <div>
-    <div class="text-3xl w-full font-bold mb-5">Projects Header</div>
+    <div class="text-3xl w-full font-bold mb-5">Meine Projekte</div>
   </div>
 
   <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
+    title="Energiewirtschaftlicher Datenaustauschdienst GmbH"
+    img="/EDA.webp"
+    desc="Maßgeschneiderte Plattform zur Verwaltung der Energiemarktteilnehmer (Netzbetreiber, Strom- & Gas-Lieferanten, etc.) inkl. Anbindung (Ponton / AS4) an die Peer-2-Peer Datenautausch-Infrastruktur."
+    url="/eda"
+    badge="Energie"
+    role="Software Architekt"
+    tags={[
+      "Spring Boot",
+      "Angular",
+      "MS SQL Server",
+      "Jira",
+      "Tailwind",
+      "OpenAPI",
+    ]}
   />
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Projects Header</div>
-  </div>
+  <div class="divider my-0"></div>
 
   <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
+    title="EU-Projekt Single Digital Gateway (SDG)"
+    img="/EU.webp"
+    desc="EU-Projekt mit dem Ziel öffentliche Dienste und Informationen über alle Mitgliedstaaten hinweg zugänglich und nutzbar zu machen."
+    url="/sdg"
+    badge="Governance"
+    role="Senior Full-Stack Developer"
+    tags={[
+      "Spring Boot",
+      "Angular",
+      "MongoDB",
+      "Bootstrap",
+      "AS/4",
+      "Barrierefrei",
+    ]}
   />
+
   <div class="divider my-0"></div>
+
   <HorizontalCard
-    title="Demo Project 4"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
+    title="Portfolio Assistent"
+    img="/portfolio-assistent.png"
+    desc="Plattform zur Digitalisierung und Verwaltung von Immobilien-Portfolios basierend auf dem Energieausweiß."
+    url="/pa"
+    badge="Immobilien"
+    role="Software Architekt & Lead Developer"
+    tags={["Spring Boot", "Angular", "MongoDB", "Tailwind", "OCR", "AWS"]}
   />
+
   <div class="divider my-0"></div>
+
   <HorizontalCard
-    title="Demo Project 5"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
+    title="Energy+ GmbH"
+    img="/energyplus.png"
+    desc="Steuerungs- und Visualisierungsplattform für B2C Photovoltaik-Systemen inkl. Smartphone-App."
+    url="/eplus"
+    badge="Energie"
+    role="Software Architekt"
+    tags={[
+      "Spring Boot",
+      "Angular",
+      "Influx",
+      "Tailwind",
+      "Ionic",
+      "Kontron-Hardware",
+    ]}
+  />
+
+  <div class="divider my-0"></div>
+
+  <HorizontalCard
+    title="SalzIT GmbH"
+    img="/salzit.png"
+    desc="Betreuung & Erweiterung einer Lantek-Zusatzapplikation für die Produktions- und Verpackungsverwaltung."
+    url="/salzit"
+    badge="Industrie"
+    role="Software Architekt"
+    tags={["Svelte", "Typescript", "Lantek", "Hardware"]}
+  />
+
+  <div class="divider my-0"></div>
+
+  <HorizontalCard
+    title="RealMetrics"
+    img="/realmetrics.svg"
+    desc="Plattform zur Sanierungssimulation von Immobilien basierend auf Energieausweißen."
+    url="/realmetrics"
+    badge="Immobilien"
+    role="Software Architekt & Lead Developer"
+    tags={["Spring Boot", "Angular", "MongoDB", "Tailwind", "EU-Taxonomie"]}
+  />
+
+  <div class="divider my-0"></div>
+
+  <HorizontalCard
+    title="Krankenhaus der Barmherzigen Brüder"
+    img="/bhb.svg"
+    desc="Digitalisierung von medizinischen Fragebögen & Entwicklung einer Lernplatform für die Erkennung und Behandlung von frühkindlichen Sprachstörungen."
+    url="/bhb"
+    badge="Healthcare"
+    role="Software Architekt"
+    tags={["NestJS", "Angular", "Redcap", "Datenschutz"]}
+  />
+
+  <div class="divider my-0"></div>
+
+  <HorizontalCard
+    title="Sylagon"
+    img="/sylagon.svg"
+    desc="Webplattform zur automatisierten Erstellung von Daten-Visualisierungen für den Einsatz im Journalismus."
+    url="/sylagon"
+    badge="Data-Visualization"
+    role="Software Architekt & Lead Developer"
+    tags={["Spring Boot", "Angular", "MongoDB", "Datenvisualisierung"]}
+  />
+
+  <div class="divider my-0"></div>
+
+  <HorizontalCard
+    title="iVolunteer"
+    img="/jku.png"
+    desc="Eine dezentralisierte Webanwendung mit dem Schwerpunkt, die Datenhoheit von den Freiwilligenorganisationen auf die Freiwilligen zu verlagern."
+    url="/ivolunteer"
+    badge="Research"
+    role="Lead Developer"
+    tags={[
+      "Spring Boot",
+      "Angular",
+      "MongoDB",
+      "Dezentrale Architektur",
+      "Forschungsprojekt",
+    ]}
+  />
+
+  <div class="divider my-0"></div>
+
+  <HorizontalCard
+    title="FlexProd"
+    img="/jku.png"
+    desc="Das Forschungsprojekt FlexProd realisiert anonyme Marktplätze von Industriekapazitäten ohne Informationen über die individuellen Kapazitäten der Teilnehmer preiszugeben."
+    url="/flexprod"
+    badge="Research"
+    role="Lead Developer"
+    tags={[
+      "Spring Boot",
+      "Angular",
+      "MongoDB",
+      "Dezentrale Architektur",
+      "Forschungsprojekt",
+    ]}
+  />
+
+  <div class="divider my-0"></div>
+
+  <HorizontalCard
+    title="Xaleon (später Teamviewer Engage)"
+    img="/xaleon.png"
+    desc="Entwicklung einer Web-basierenden Customer Engagement Plattform ähnlich wie Teamviewer als Desktop-Anwendung."
+    url="/teamviewer"
+    badge="Digital Services"
+    role="Developer"
+    tags={["Spring Boot", "Angular", "MongoDB", "Bootstrap"]}
   />
 </BaseLayout>
