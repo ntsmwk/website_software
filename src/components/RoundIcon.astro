@@ -1,0 +1,26 @@
+---
+const { name, img, format, url } = Astro.props;
+import { Image } from "astro:assets";
+---
+
+<a href={url} target="_blank" class="p-3">
+    <div class="flex flex-col transition ease-in-out hover:scale-[102%]">
+        <div class="avatar w-[6rem]">
+            {
+                (
+                    <Image
+                        class=""
+                        format={format}
+                        width={100}
+                        height={100}
+                        src={img}
+                        alt="Proile fimage"
+                    />
+                )
+            }
+        </div>
+        <div class="mt-auto mx-auto">
+            <p>{name}</p>
+        </div>
+    </div>
+</a>
