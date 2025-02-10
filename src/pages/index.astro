@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
+import RoundIcon from "../components/RoundIcon.astro";
 import { getCollection } from "astro:content";
 import createSlug from "../lib/createSlug";
 
@@ -68,6 +69,76 @@ const last_posts = posts.slice(0, 3); */
 
   <div class="mt-12">
     <div class="text-3xl w-full font-bold mb-2 mt-12">Kern-Technologien</div>
+  </div>
+
+  <div class="flex flex-row flex-wrap">
+    <RoundIcon
+      name="Java"
+      img="/technologies/java.png"
+      format="png"
+      url="https://www.java.com"
+    />
+    <RoundIcon
+      name="Spring Boot"
+      img="/technologies/spring.png"
+      format="png"
+      url="https://spring.io/projects/spring-boot"
+    />
+
+    <RoundIcon
+      name="Angular"
+      img="/technologies/angular.jpg"
+      format="jpg"
+      url="https://angular.dev/"
+    />
+
+    <RoundIcon
+      name="Tailwind"
+      img="/technologies/tailwind.png"
+      format="png"
+      url="https://tailwindcss.com/"
+    />
+
+    <RoundIcon
+      name="Jira"
+      img="/technologies/jira.png"
+      format="png"
+      url="https://www.atlassian.com/software/jira/"
+    />
+
+    <RoundIcon
+      name="Confluence"
+      img="/technologies/confluence.png"
+      format="png"
+      url="https://www.atlassian.com/software/confluence/"
+    />
+    <RoundIcon
+      name="UML"
+      img="/technologies/uml.png"
+      format="png"
+      url="https://www.uml.org/"
+    />
+
+    <RoundIcon
+      name="C4 Model"
+      img="/technologies/c4.png"
+      format="png"
+      url="https://c4model.com/"
+    />
+
+    <RoundIcon
+      name="Agile Methodik"
+      img="/technologies/agile.png"
+      format="png"
+      url="https://en.wikipedia.org/wiki/Agile_software_development/"
+    />
+  </div>
+
+  <div class="flex justify-end mt-4">
+    <a
+      class="btn btn-lg bg-orange-500 hover:bg-orange-800 rounded-full"
+      href="/technologies">Alle Technologien</a
+    >
   </div>
 
   <!-- <div>
