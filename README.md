@@ -1,267 +1,102 @@
 # Weißenbek Software Website
 
-## Installation
+Personal business site for Weißenbek Software e.U. — a bilingual (DE/EN)
+CV, project portfolio, and technology showcase. Deployed at
+[weissenbek.at](https://weissenbek.at).
 
-Run the following command in your terminal
+## Development
 
 ```bash
 pnpm install
+pnpm dev
 ```
-
-Once the packages are installed you are ready to run astro. Astro comes with a built-in development server that has everything you need for project development. The astro dev command will start the local development server so that you can see your new website in action for the very first time.
 
 ```bash
-pnpm run dev
+pnpm build    # static build to dist/
+pnpm preview  # serve the production build locally
 ```
 
-## Tech Stack
+## Tech stack
 
-- [Astro](https://astro.build)
-- [tailwindcss](https://tailwindcss.com/)
-- [DaisyUI](https://daisyui.com/)
+- [Astro](https://astro.build) (static output)
+- [Tailwind CSS](https://tailwindcss.com/) + [daisyUI](https://daisyui.com/)
+  — two custom themes (`dark` default, `light`) defined in
+  `tailwind.config.cjs`, no stock daisyUI themes
+- Self-hosted variable fonts ([Inter](https://fontsource.org/fonts/inter),
+  [JetBrains Mono](https://fontsource.org/fonts/jetbrains-mono)) via
+  `@fontsource-variable/*`
 
-## Project Structure
+## Content
 
-```php
-├── src/
-│   ├── components/
-│   │   ├── cv/
-│   │   │   ├── TimeLine
-│   │   ├── BaseHead.astro
-│   │   ├── Card.astro
-│   │   ├── Footer.astro
-│   │   ├── Header.astro
-│   │   └── HorizontalCard.astro
-│   │   └── SideBar.astro
-│   │   └── SideBarMenu.astro
-│   │   └── SideBarFooter.astro
-│   ├── content/
-│   │   ├── blog/
-│   │   │   ├── post1.md
-│   │   │   ├── post2.md
-│   │   │   └── post3.md
-│   │   ├── store/
-│   │   │   ├── item1.md
-│   │   │   ├── item2.md
-│   ├── layouts/
-│   │   └── BaseLayout.astro
-│   │   └── PostLayout.astro
-│   └── pages/
-│   │   ├── blog/
-│   │   │   ├── [...page].astro
-│   │   │   ├── [slug].astro
-│   │   └── cv.astro
-│   │   └── index.astro
-│   │   └── projects.astro
-│   │   └── rss.xml.js
-│   ├── styles/
-│   │   └── global.css
-│   └── config.ts
-├── public/
-│   ├── favicon.svg
-│   └── profile.webp
-│   └── social_img.webp
-├── astro.config.mjs
-├── tailwind.config.cjs
-├── package.json
-└── tsconfig.json
-```
+Projects and technologies are **not** hardcoded into pages — they live in
+typed data files:
 
-### Site config
+- `src/data/projects.ts`
+- `src/data/technologies.ts`
 
-You can change global site configuration on '/src/config.ts' file:
+Each text field is a `{ de: string, en: string }` pair. To add or edit a
+project or technology, edit these files; the Home, Projects, and
+Technologies pages (in both languages) render from them automatically.
 
-- **SITE_TITLE**: Default pages title.
-- **SITE_DESCRIPTION**: Default pages title.
-- **GENERATE_SLUG_FROM_TITLE**: By default Astrofy will generate the blog slug pages base on the article name. Set this var to false if you want to use the Astro file base (Compatible with Astrofy older versions).
-- **TRANSITION_API**: Enable and disable transition API
+Chrome/UI strings (nav labels, section headings, footer) live in
+`src/i18n/ui.ts`.
 
-### Components usage
+## Bilingual routing (DE/EN)
 
-#### Layout Components
+Uses Astro's native `i18n` config (see `astro.config.mjs`): German is the
+default locale served at the root (`/`, `/projects`, ...), English is
+served under `/en/` (`/en`, `/en/projects`, ...).
 
-The `BaseHead`, `Footer`, `Header`, and `SideBar` components are already included in the layout system. To change the website content you can edit the content of these components.
+Each English route (`src/pages/en/*.astro`) is a thin re-export of its
+German counterpart — the underlying page component reads
+`Astro.currentLocale` itself (via `src/lib/i18n.ts`) and picks the right
+language, so there's no duplicated markup to keep in sync.
 
-##### SideBar
+The Impressum and Datenschutzerklärung pages are German-only for now
+(no `/en/` legal pages exist yet).
 
-In the Sidebar you can change your profilePicture, links to all your website pages, and your social icons.
+## Theming
 
-You can change your avatar shape using [mask classes](https://daisyui.com/components/mask/).
+Two daisyUI themes (`dark`, `light`) are defined in `tailwind.config.cjs`
+— dark is the default. `src/components/ThemeToggle.astro` flips
+`document.documentElement.dataset.theme` and persists the choice to
+`localStorage`; `BaseHead.astro` applies it synchronously before first
+paint to avoid a flash of the wrong theme.
 
-The used social-icons are SVG form [BoxIcons](https://boxicons.com/) pack. You can replace the icons in the `SideBarFooter` component
-
-To add a new page in the sidebar go to the `SideBarMenu` component.
+## Project structure
 
 ```
-<li><a class="py-3 text-base" id="home" href="/">Home</a></li>
-
+src/
+├── pages/                  # index, projects, technologies, cv, imprint, privacy, 404
+│   └── en/                 # thin re-exports for the English routes
+├── layouts/
+│   └── BaseLayout.astro    # drawer shell: Header (mobile) / SideBar (desktop) / Footer
+├── components/
+│   ├── HorizontalCard.astro, RoundIcon.astro, TimeLine.astro
+│   ├── ThemeToggle.astro, LanguageToggle.astro
+│   └── SideBar*.astro, Header.astro, Footer.astro, BaseHead.astro
+├── data/
+│   ├── projects.ts, technologies.ts   # bilingual content
+├── i18n/
+│   └── ui.ts                # chrome-string dictionary
+├── lib/
+│   └── i18n.ts               # locale helpers
+├── styles/
+│   └── global.css
+└── config.ts                 # SITE_TITLE, SITE_DESCRIPTION, feature flags
 ```
-
-**Note**: In order to change the sidebar menu's active item, you need to setup the prop `sideBarActiveItemID` in the `BaseLayout` component of your new page and add that id to the link in the `SideBarMenu`
-
-#### TimeLine
-
-The timeline components are used to confirm the CV.
-
-```html
-<div class="time-line-container">
-  <TimeLineElement title="Element Title" subtitle="Subtitle">
-    Content that can contain
-    <div>divs</div>
-    and <span>anything else you want</span>.
-  </TimeLineElement>
-  ...
-</div>
-```
-
-#### Card & HorizontalCard
-
-The cards are primarly used for the Project and the Blog components. They include a picture, a title, and a description. 
-
-```html
-<HorizontalCard title="Card Title" img="imge_url" desc="Description" url="Link
-URL" target="Optional link target (_blank default)" badge="Optional badge"
-tags={['Array','of','tags']} />
-```
-
-#### HorizontalCard Shop Item
-
-
-This component is already included in the Store layout of the template. In case you want to use it in another place these are the props.
-
-```html
-<HorizontalShopItem
-  title="Item Title"
-  img="imge_url"
-  desc="Item description"
-  pricing="current_price"
-  oldPricing="old_price"
-  checkoutUrl="external store checkout url"
-  badge="Optional badge"
-  url="item details url"
-  custom_link="Custom link url"
-  custom_link_label="Cutom link btn label"
-  target="Optional link target (_self default)"
-/>
-```
-
-#### Adding a Custom Component
-
-To add a custom component, you can create a .astro file in the components folder under the source folder. 
-
-Components must follow this template. The ```---``` represents the code fence and uses Javascript and can be used for imports. 
-
-The HTML component is the actual style of your new component. 
-
-```html
----
-// Component Script (JavaScript)
----
-<!-- Component Template (HTML + JS Expressions) -->
-```
-
-For more details, see the [astro components](https://docs.astro.build/en/core-concepts/astro-components/) documentation here. 
-
-### Layouts
-
-Include `BaseLayout` in each page you add and `PostLayout` to your post pages.
-
-The BaseLayout defines a general template for each new webpage you want to add. It imports constants SITE_TITLE and SITE_DESCRIPTION which can be modified in the ```../config``` folder. Data placed there can be imported anywhere using import. 
-
-### Content
-
-You can add a [content collection](https://docs.astro.build/en/guides/content-collections/) in `/content/' folder, you will need add it at config.ts.
-
-#### config.ts
-
-Where you need to define your content collections, we define our content schemas too.
-
-#### Blog
-
-Add your `md` blog post in the `/content/blog/` folder.
-
-##### Post format
-
-Add code with this format in the top of each post file.
-
-```
----
-title: "Post Title"
-description: "Description"
-pubDate: "Post date format(Sep 10 2022)"
-heroImage: "Post Hero Image URL"
----
-```
-
-### Pages
-
-#### Blog
-
-Blog uses Astro's content collection to query post's `md`.
-
-##### [page].astro
-
-The `[page].astro` is the route to work with the paginated post list. You can change there the number of items listed for each page and the pagination button labels.
-
-##### [slug].astro
-
-The `[slug].astro` is the base route for every blog post, you can customize the page layout or behaviour, by default uses `content/blog` for content collection and `PostLayout` as layout.
-
-#### Shop
-
-Add your `md` item in the `/pages/shop/` folder.
-
-##### [page].astro
-
-The `[page].astro` is the route to work with the paginated item list. You can change there the number of items listed for each page and the pagination button labels. The shop will render all `.md` files you include inside this folder.
-
-##### Item format
-
-Add code with this format at the top of each item file.
-
-```js
----
-title: "Demo Item 1"
-description: "Item description"
-heroImage: "Item img url"
-details: true // show or hide details btn
-custom_link_label: "Custom btn link label"
-custom_link: "Custom btn link"
-pubDate: "Sep 15 2022"
-pricing: "$15"
-oldPricing: "$25.5"
-badge: "Featured"
-checkoutUrl: "https://checkouturl.com/"
----
-```
-
-#### Static pages
-
-The other pages included in the template are static pages. The `index` page belongs to the root page. You can add your pages directly in the `/pages` folder and then add a link to those pages in the `sidebar` component.
-
-Feel free to modify the content included in the pages that the template contains or add the ones you need.
-
-### Theming
-
-To change the template theme change the `data-theme` attribute of the `<html>` tag in `BaseLayout.astro` file.
-
-You can choose among 30 themes available or create your custom theme. See themes available [here](https://daisyui.com/docs/themes/).
-
-## Sitemap
-
-The Sitemap is generated automatically when you build your website in the root of the domain. Please update the `robots.txt` file in the public folder with your site name URL for the Sitemap.
 
 ## Deploy
 
-You can deploy your site on your favourite static hosting service such as Vercel, Netlify, GitHub Pages, etc.
+Static site — `pnpm build` outputs to `dist/`, deployable to any static
+host. `astro.config.mjs`'s `site` is set to `https://weissenbek.at`, used
+for the generated sitemap and canonical/OG URLs.
 
-The configuration for the deployment varies depending on the platform where you are going to do it. See the [official Astro information](https://docs.astro.build/en/guides/deploy/) to deploy your website.
+**Pushing to this repo's remote triggers an automatic production
+deploy** — treat `git push` on the deployed branch accordingly.
 
-> **⚠️ CAUTION** </br>
-> The Blog pagination of this template is implemented using dynamic route parameters in its filename and for now this format is incompatible with SSR deploy configs, so please use the default static deploy options for your deployments.
+---
 
-## Credit
-
-Original Template by [Astrofy](https://github.com/manuelernestog/astrofy) 
-
-
+Originally based on the [Astrofy](https://github.com/manuelernestog/astrofy)
+template; since substantially rewritten (custom theme, bilingual routing,
+data-driven content, unused Blog/Store/Services scaffolding removed).
