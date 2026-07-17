@@ -2,15 +2,19 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import RoundIcon from "../components/RoundIcon.astro";
 import { technologyCategories } from "../data/technologies";
+import { getLocale, useTranslations } from "../lib/i18n";
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
 ---
 
 <BaseLayout title="Technologien" sideBarActiveItemID="technologies">
-  <div class="text-3xl w-full font-bold mb-5">Technologien</div>
+  <div class="text-3xl w-full font-bold mb-5">{t("technologies.title")}</div>
 
   {
     technologyCategories.map((category) => (
       <>
-        <div class="text-2xl w-full font-bold mb-5 mt-5">{category.name.de}</div>
+        <div class="text-2xl w-full font-bold mb-5 mt-5">{category.name[locale]}</div>
         <div class="flex flex-row flex-wrap">
           {category.items.map((item) => (
             <RoundIcon name={item.name} img={item.img} format={item.format} url={item.url} />

@@ -1,0 +1,18 @@
+---
+import { getLocale, alternatePath } from "../lib/i18n";
+
+const { class: className = "" } = Astro.props;
+
+const locale = getLocale(Astro.currentLocale);
+const target = locale === "en" ? "de" : "en";
+const href = alternatePath(Astro.url.pathname, target);
+---
+
+<a
+  href={href}
+  aria-label="Switch language"
+  title={target === "en" ? "Switch to English" : "Auf Deutsch wechseln"}
+  class={`btn btn-ghost btn-square font-mono text-sm ${className}`}
+>
+  {target.toUpperCase()}
+</a>

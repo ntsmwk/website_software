@@ -2,6 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
+import { alternatePath } from '../lib/i18n';
 
 export interface Props {
 	title: string;
@@ -11,6 +12,9 @@ export interface Props {
 }
 
 const { title, description, image = '/social_img.webp', ogType = 'website' } = Astro.props;
+
+const dePath = alternatePath(Astro.url.pathname, 'de');
+const enPath = alternatePath(Astro.url.pathname, 'en');
 ---
 
 <!-- Global Metadata -->
@@ -18,6 +22,9 @@ const { title, description, image = '/social_img.webp', ogType = 'website' } = A
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
+<link rel="alternate" hreflang="de" href={new URL(dePath, Astro.url)} />
+<link rel="alternate" hreflang="en" href={new URL(enPath, Astro.url)} />
+<link rel="alternate" hreflang="x-default" href={new URL(dePath, Astro.url)} />
 
 <!-- Theme init: runs before first paint to avoid a flash of the wrong theme -->
 <script is:inline>

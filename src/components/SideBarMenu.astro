@@ -1,16 +1,25 @@
 ---
+import { getLocale, useTranslations, localizedHref } from "../lib/i18n";
+
 const { sideBarActiveItemID } = Astro.props;
 const activeClass = "bg-base-300"; // For primary color replace with `active` class
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
 ---
 
 <ul class="menu grow shrink menu-md overflow-y-auto">
-    <li><a class="py-3 text-base" id="home" href="/">Home</a></li>
     <li>
-        <a class="py-3 text-base" id="projects" href="/projects">Projekte</a>
+        <a class="py-3 text-base" id="home" href={localizedHref("/", locale)}>{t("nav.home")}</a>
     </li>
     <li>
-        <a class="py-3 text-base" id="technologies" href="/technologies"
-            >Technologien</a
+        <a class="py-3 text-base" id="projects" href={localizedHref("/projects", locale)}
+            >{t("nav.projects")}</a
+        >
+    </li>
+    <li>
+        <a class="py-3 text-base" id="technologies" href={localizedHref("/technologies", locale)}
+            >{t("nav.technologies")}</a
         >
     </li>
     <li>
@@ -18,7 +27,7 @@ const activeClass = "bg-base-300"; // For primary color replace with `active` cl
             class="py-3 text-base"
             href="mailto:markus@weissenbek.at"
             target="_blank"
-            referrerpolicy="no-referrer-when-downgrade">Kontakt</a
+            referrerpolicy="no-referrer-when-downgrade">{t("nav.contact")}</a
         >
     </li>
 </ul>

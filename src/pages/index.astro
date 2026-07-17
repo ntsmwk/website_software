@@ -4,6 +4,27 @@ import HorizontalCard from "../components/HorizontalCard.astro";
 import RoundIcon from "../components/RoundIcon.astro";
 import { projects, featuredProjectIds } from "../data/projects";
 import { technologyCategories, coreTechnologyNames } from "../data/technologies";
+import { getLocale, useTranslations, localizedHref } from "../lib/i18n";
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+
+const heroCopy = {
+  de: {
+    tagline: "Software Architekt | Senior Software Engineer",
+    bioHtml:
+      "Selbstständiger <strong>Software Architekt</strong> und <strong>Senior Software Engineer</strong> im Web-Bereich. Seit mehr als 10 Jahren beschäftige ich mich damit, komplexe Geschäftsprozesse zu konzeptionieren, technisch umzusetzen und langfristig zu betreuen. Meine Kern-Kompetenz liegt vor allem in der Kombination von Technik, Wirtschaft und Team.",
+    philosophyHtml:
+      "Meine Grundphilosophie im Leben wie auch im Beruf ist klassisch oberösterreichisch &rdquo;Geht ned, gibts ned!&rdquo;.",
+  },
+  en: {
+    tagline: "Software Architect | Senior Software Engineer",
+    bioHtml:
+      "Independent <strong>Software Architect</strong> and <strong>Senior Software Engineer</strong> specializing in web technologies. For more than 10 years, I&rsquo;ve been designing complex business processes, implementing them technically, and maintaining them over the long term. My core strength lies in combining technology, business, and team.",
+    philosophyHtml:
+      "My guiding philosophy, in life as in work, is classic Upper Austrian: &rdquo;Geht ned, gibts ned!&rdquo; &mdash; roughly, &ldquo;there&rsquo;s no such thing as can&rsquo;t.&rdquo;",
+  },
+}[locale];
 
 const featuredProjects = featuredProjectIds
   .map((id) => projects.find((project) => project.id === id))
@@ -18,38 +39,27 @@ const coreTechnologies = coreTechnologyNames
 <BaseLayout sideBarActiveItemID="home">
   <div class="mt-5">
     <div class="text-5xl font-bold">DI Markus Weißenbek</div>
-    <div class="text-3xl py-3 font-bold">
-      Software Architekt | Senior Software Engineer
-    </div>
+    <div class="text-3xl py-3 font-bold">{heroCopy.tagline}</div>
     <div class="py-2">
       <text class="text-lg">
-        <p class="text-justify py-2">
-          Selbstständiger <strong>Software Architekt</strong> und <strong
-            >Senior Software Engineer
-          </strong> im Web-Bereich. Seit mehr als 10 Jahren beschäftige ich mich
-          damit, komplexe Geschäftsprozesse zu konzeptionieren, technisch umzusetzen
-          und langfristig zu betreuen. Meine Kern-Kompetenz liegt vor allem in der
-          Kombination von Technik, Wirtschaft und Team.
-
-          <div class="divider my-2"></div>
-          Meine Grundphilosophie im Leben wie auch im Beruf ist klassisch oberösterreichisch
-          ”Geht ned, gibts ned!”.
-        </p>
+        <p class="text-justify py-2" set:html={heroCopy.bioHtml} />
+        <div class="divider my-2"></div>
+        <p class="text-justify py-2" set:html={heroCopy.philosophyHtml} />
       </text>
     </div>
   </div>
 
   <div class="mt-12">
-    <div class="text-3xl w-full font-bold mb-2">Letzten Projekte</div>
+    <div class="text-3xl w-full font-bold mb-2">{t("home.latestProjects")}</div>
   </div>
 
   {
     featuredProjects.map((project, index) => (
       <>
         <HorizontalCard
-          title={project.title.de}
+          title={project.title[locale]}
           img={project.image}
-          desc={project.description.de}
+          desc={project.description[locale]}
           url={project.url}
         />
         {index < featuredProjects.length - 1 && <div class="divider my-0" />}
@@ -59,12 +69,12 @@ const coreTechnologies = coreTechnologyNames
   <div class="flex justify-end mt-4">
     <a
       class="btn btn-lg btn-primary shadow-glow-sm"
-      href="/projects">Alle Projekte</a
+      href={localizedHref("/projects", locale)}>{t("home.allProjects")}</a
     >
   </div>
 
   <div class="mt-12">
-    <div class="text-3xl w-full font-bold mb-2 mt-12">Kern-Technologien</div>
+    <div class="text-3xl w-full font-bold mb-2 mt-12">{t("home.coreTechnologies")}</div>
   </div>
 
   <div class="flex flex-row flex-wrap">
@@ -78,7 +88,7 @@ const coreTechnologies = coreTechnologyNames
   <div class="flex justify-end mt-4">
     <a
       class="btn btn-lg btn-primary shadow-glow-sm"
-      href="/technologies">Alle Technologien</a
+      href={localizedHref("/technologies", locale)}>{t("home.allTechnologies")}</a
     >
   </div>
 

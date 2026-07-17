@@ -1,5 +1,9 @@
 ---
+import { getLocale, useTranslations } from "../lib/i18n";
+
 const today = new Date();
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
 ---
 
 <footer class="footer footer-center block mb-5 pt-10">
@@ -8,8 +12,8 @@ const today = new Date();
   </div>
 
   <span class="flex flex-row justify-center">
-    <a href="/imprint">Impressum</a>
-    <a href="/privacy">Datenschutz</a>
+    <a href="/imprint">{t("footer.imprint")}</a>
+    <a href="/privacy">{t("footer.privacy")}</a>
   </span>
 </footer>
 <style></style>
