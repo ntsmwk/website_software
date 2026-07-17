@@ -1,3 +1,19 @@
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/jetbrains-mono';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply font-sans;
+    }
+}
+
 .time-line-container>div:last-child .education__time>.education__line {
     display: none;
+}
+
+.text-glow {
+    text-shadow: 0 0 16px rgba(45, 226, 230, 0.45);
 }
