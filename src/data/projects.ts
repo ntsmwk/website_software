@@ -59,7 +59,7 @@ export const projects: Project[] = [
       en: "Software Architect & Lead Developer",
     },
     badge: { de: "Immobilien", en: "Real Estate" },
-    image: "/portfolio-assistent.png",
+    image: "/portfolio-assistent.webp",
     tags: ["Spring Boot", "Angular", "MongoDB", "Tailwind", "OCR", "AWS"],
   },
   {
@@ -72,7 +72,7 @@ export const projects: Project[] = [
     role: { de: "Software Architekt", en: "Software Architect" },
     badge: { de: "Energie", en: "Energy" },
     url: "https://energyplus.at/",
-    image: "/energyplus.png",
+    image: "/energyplus.webp",
     tags: ["Spring Boot", "Angular", "Influx", "Tailwind", "Ionic", "Kontron-Hardware"],
   },
   {
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     role: { de: "Software Architekt", en: "Software Architect" },
     badge: { de: "Industrie", en: "Industry" },
     url: "https://www.salzit.com/",
-    image: "/salzit.png",
+    image: "/salzit.webp",
     tags: ["Svelte", "TypeScript", "Lantek", "Hardware"],
   },
   {
@@ -146,7 +146,7 @@ export const projects: Project[] = [
     role: { de: "Lead Developer", en: "Lead Developer" },
     badge: { de: "Research", en: "Research" },
     url: "http://cis.jku.at/projects/36ec93.html?view=project",
-    image: "/jku.png",
+    image: "/jku.webp",
     tags: ["Spring Boot", "Angular", "MongoDB", "Decentralized Architecture", "Research Project"],
   },
   {
@@ -159,7 +159,7 @@ export const projects: Project[] = [
     role: { de: "Lead Developer", en: "Lead Developer" },
     badge: { de: "Research", en: "Research" },
     url: "http://cis.jku.at/projects/35ec93.html?view=project",
-    image: "/jku.png",
+    image: "/jku.webp",
     tags: ["Spring Boot", "Angular", "MongoDB", "Decentralized Architecture", "Research Project"],
   },
   {
@@ -175,7 +175,7 @@ export const projects: Project[] = [
     role: { de: "Developer", en: "Developer" },
     badge: { de: "Digital Services", en: "Digital Services" },
     url: "https://www.tech2b.at/en/startup/xaleon/",
-    image: "/xaleon.png",
+    image: "/xaleon.webp",
     tags: ["Spring Boot", "Angular", "MongoDB", "Bootstrap"],
   },
 ];
