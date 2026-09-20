@@ -7,8 +7,8 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 
 | what | sha | branch | note |
 |---|---|---|---|
-| tip | `6130355` | `redesign` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
-| live | `792287b` | `master` | deployed 2026-09-20, third deploy: theme persists across navigation |
+| tip | `837f9a5` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
+| live | `837f9a5` | `master` | deployed 2026-09-20, fifth deploy: dark-mode polish, Claude, dead link removed, WebP images |
 
 ## 2. Where things stand (2026-09-20)
 
