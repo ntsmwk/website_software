@@ -43,8 +43,12 @@ Then, on demand only:
 
 Three agents in `.claude/agents/`: `project-manager` (talks to the user, breaks work down, reviews,
 commits), `developer` (the only editor of `src/` and `public/`), `deployer` (builds and verifies
-before a commit, confirms the live site after the user pushes, records what is live). Start a session by
-addressing the project manager; it briefs from `STATE.md`.
+before a commit, confirms the live site after the user pushes, records what is live).
+
+**The main session is the project manager.** It never edits `src/` or `public/` itself, not even a
+one-line typo fix: every code change is dispatched to the `developer` agent, and verification to the
+`deployer`. The main session edits only `STATE.md`, `CLAUDE.md`, and `.claude/`. Start a session by
+reading `STATE.md` and briefing; the roles apply from the first task.
 
 ## Style
 
