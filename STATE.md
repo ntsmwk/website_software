@@ -7,8 +7,8 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 
 | what | sha | branch | note |
 |---|---|---|---|
-| tip | `5352a2e` | `redesign` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
-| live | `fc0ffc9` | `master` | what weissenbek.at serves; nothing from `redesign` is pushed |
+| tip | `73db9ae` | `redesign` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
+| live | `fc0ffc9` | `master` | what weissenbek.at serves; `redesign` is pushed to origin but not merged |
 
 ## 2. Where things stand (2026-09-20)
 
@@ -40,7 +40,7 @@ Move a row, don't add a second one for the same subject.
 | 6 | Legal pages in English | ⛔ | German-authoritative + EN disclaimer, German-only, or full translation. Legal call, don't invent wording. |
 | 7 | Downloadable CV PDF | ⛔ | wanted or not |
 | 8 | Sign-off on accent `#2de2e6` / Inter + JetBrains Mono | ⛔ | nothing pushed back yet |
-| 9 | Merge `redesign` → `master`, push, verify live | ⬜ | deployer, only on explicit word. Deploy mechanism is outside this repo (no workflow file); first deploy should confirm what actually triggers it. |
+| 9 | Merge `redesign` → `master`, push, verify live | ⬜ | deployer, only on explicit word. Netlify deploys `master` only (see §6). |
 | 10 | Remove `README_old.md` (original Astrofy README) | ⬜ | trivial, ask first |
 
 ## 4. Decisions made, don't re-litigate
@@ -71,7 +71,9 @@ Things a refresh pass should touch. Confirm the facts with the user where marked
 
 ## 6. Traps ⚠️
 
-- `git push` = production deploy. No workflow file in the repo; the trigger lives at the host.
+- Host is **Netlify**, production branch `master`. Pushing `redesign` (2026-09-20, `73db9ae`) deployed
+  nothing: live site unchanged after 3 min, no GitHub status or deployment posted (Netlify posts none
+  for this repo, not even on `master`). Only a push to `master` deploys. Branch-deploy URL unknown.
 - `dist/` is gitignored and stale (July); rebuild before judging anything from it.
 - New project logos: nothing to do, the white plate in `HorizontalCard.astro` handles contrast.
 - `README.md` still says "no `/en/` legal pages exist yet" — keep it true or update it with #6.

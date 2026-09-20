@@ -17,7 +17,7 @@ Then, on demand only:
 
 ## Facts that are not derivable from the code
 
-- **`git push` deploys to production.** Pushing `master` to `origin` triggers an automatic deploy of
+- **`git push origin master` deploys to production** (Netlify, production branch `master`; other branches deploy nothing). It triggers an automatic deploy of
   weissenbek.at. Never push without the user's explicit word in that moment, even in auto mode. The
   `deployer` agent is the only one that pushes. Local commits are fine.
 - `redesign` is the working branch. `master` is what is live.
