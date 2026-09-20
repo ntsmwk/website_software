@@ -64,7 +64,7 @@ export const projects: Project[] = [
     },
     role: { de: "Senior Full-Stack Developer", en: "Senior Full-Stack Developer" },
     badge: { de: "Governance", en: "Governance" },
-    url: "https://www.brz.at/",
+    url: "https://www.brz.gv.at/",
     duration: { de: "3 Jahre (laufend)", en: "3 years (ongoing)" },
     highlights: [
       {

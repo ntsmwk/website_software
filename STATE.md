@@ -7,7 +7,7 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 
 | what | sha | branch | note |
 |---|---|---|---|
-| tip | `fee57c2` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
+| tip | `acb7c5b` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
 | live | `2ac376d` | `master` | deployed 2026-09-20, tenth deploy: English legal pages, light share image |
 
 ## 2. Where things stand (2026-09-20)
@@ -48,6 +48,7 @@ Move a row, don't add a second one for the same subject.
 | 14 | Option A transformation, step 2: home page as one-pager (hero, logos, services, cases, about, contact) | ✅ | 2026-09-20, shipped with draft copy; outcome lines still empty (see §5) |
 | 15 | Project detail pages, cards link internally, external link on the detail page | ✅ | 2026-09-20; highlights/outcome fields exist but are empty |
 | 16 | Project data enriched from the CV: durations, highlights, BRZ correction; trailing-slash links | ✅ | 2026-09-20 |
+| 20 | BRZ: correct domain is brz.gv.at (brz.at is an unrelated ERP vendor; the CV has it wrong); logo in the client row | ✅ | 2026-09-20 |
 | 18 | Share image (Open Graph) regenerated in the light style | ✅ | 2026-09-20 |
 | 17 | Availability line | ✅ | not wanted, user decision 2026-09-20 |
 

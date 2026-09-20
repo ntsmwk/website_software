@@ -46,11 +46,7 @@ const eyebrowClass = "mb-4 font-mono text-xs uppercase tracking-widest text-base
                 title={client.name}
                 class="grayscale opacity-70 transition hover:opacity-100 hover:grayscale-0"
               >
-                {client.logo ? (
-                  <img src={client.logo} alt={client.name} class="h-7 w-auto md:h-8" loading="lazy" />
-                ) : (
-                  <span class="font-semibold tracking-tight">{client.name}</span>
-                )}
+                <img src={client.logo} alt={client.name} class="h-7 w-auto md:h-8" loading="lazy" />
               </a>
             );
           })
