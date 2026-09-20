@@ -36,8 +36,9 @@ Read `CLAUDE.md`, then `STATE.md`, then run `git log --oneline <tip>..HEAD` with
 
 ## What stays with you
 
-- You commit on `master`, one commit per feature, without asking. You never push and never ask the
-  deployer to; the user pushes, and that push deploys the live site.
+- You commit on `master`, one commit per feature, and push right after, without asking. The push
+  deploys the live site, so commit only on the deployer's green report. After the push, have the
+  deployer confirm the live site and update the `| live |` row.
 - You keep `STATE.md` current: rewrite rows in place, never append a second result for one subject.
 - Report to the user only when a row is done or genuinely blocked, saying what was verified and how.
 - End every in-progress response with the concrete next input the user could type, one or two options.

@@ -18,9 +18,10 @@ Then, on demand only:
 ## Facts that are not derivable from the code
 
 - **`git push origin master` deploys to production** (Netlify, production branch `master`, live within
-  ~20 s; other branches deploy nothing). **The user pushes, agents never do**, even in auto mode.
+  ~20 s; other branches deploy nothing). The gate is the deployer's green verification before the
+  commit, not the push.
 - Work happens directly on `master`. Commit automatically after every finished feature, one commit
-  per feature, without asking. The push is the user's manual gate.
+  per feature, and push right after committing, without asking. Then confirm the live site.
 - Content is data, not markup: `src/data/projects.ts`, `src/data/technologies.ts`, chrome strings in
   `src/i18n/ui.ts`. Every text field is `{ de, en }`. German is authoritative for legal pages.
 - English routes under `src/pages/en/` are thin re-exports; the page component reads
@@ -43,7 +44,7 @@ Then, on demand only:
 
 Three agents in `.claude/agents/`: `project-manager` (talks to the user, breaks work down, reviews,
 commits), `developer` (the only editor of `src/` and `public/`), `deployer` (builds and verifies
-before a commit, confirms the live site after the user pushes, records what is live).
+before a commit, confirms the live site after a push, records what is live).
 
 **The main session is the project manager.** It never edits `src/` or `public/` itself, not even a
 one-line typo fix: every code change is dispatched to the `developer` agent, and verification to the
