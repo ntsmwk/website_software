@@ -8,7 +8,7 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 | what | sha | branch | note |
 |---|---|---|---|
 | tip | `6b83412` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
-| live | `a71750b` | `master` | deployed 2026-09-20, twelfth deploy: Lighthouse fixes, security headers |
+| live | `3b2ac8e` | `master` | deployed 2026-09-20, thirteenth deploy: CSP font fix; Lighthouse 100/100/100/100 on all 10 runs |
 
 ## 2. Where things stand (2026-09-20)
 
@@ -82,6 +82,7 @@ Things a refresh pass should touch. Confirm the facts with the user where marked
 
 ## 6. Traps ⚠️
 
+- **Lighthouse baseline 2026-09-20: 100 in all four categories, mobile and desktop, on /, /projects/, /projects/eda/, /cv/, /en/.** Re-run after bigger changes: `npx --yes lighthouse@12 <url> --chrome-flags="--headless=new --no-sandbox" --output=json`. Remaining diagnostics only: render-blocking stylesheet, HSTS `preload` directive (deliberately not set), Trusted Types (not needed for a static site). `assetsInlineLimit: 0` in astro.config exists because the CSP `font-src 'self'` blocks inlined data: fonts.
 - **pnpm version.** The lockfile is v9 but the PATH `pnpm` is 8.15.4. `pnpm install`/`pnpm add` with v8
   rewrites the lockfile to v6 and re-resolves everything (bumped `@astrojs/sitemap` to an Astro-5 release,
   broke the build). Use `npx pnpm@9 add …` for dependency changes; `pnpm build`/`pnpm preview` are fine.
