@@ -4,6 +4,7 @@ export const defaultLocale: Locale = "de";
 
 export const ui = {
   de: {
+    "site.tagline": "Software Architekt | Senior Software Engineer",
     "nav.home": "Home",
     "nav.projects": "Projekte",
     "nav.technologies": "Technologien",
@@ -21,6 +22,7 @@ export const ui = {
     "lang.toggle": "Sprache wechseln",
   },
   en: {
+    "site.tagline": "Software Architect | Senior Software Engineer",
     "nav.home": "Home",
     "nav.projects": "Projects",
     "nav.technologies": "Technologies",

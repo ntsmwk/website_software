@@ -9,9 +9,10 @@ export interface Props {
 	description: string;
 	image?: string;
 	ogType?: string;
+	germanOnly?: boolean;
 }
 
-const { title, description, image = '/social_img.webp', ogType = 'website' } = Astro.props;
+const { title, description, image = '/social_img.webp', ogType = 'website', germanOnly = false } = Astro.props;
 
 const dePath = alternatePath(Astro.url.pathname, 'de');
 const enPath = alternatePath(Astro.url.pathname, 'en');
@@ -23,7 +24,7 @@ const enPath = alternatePath(Astro.url.pathname, 'en');
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 <link rel="alternate" hreflang="de" href={new URL(dePath, Astro.url)} />
-<link rel="alternate" hreflang="en" href={new URL(enPath, Astro.url)} />
+{!germanOnly && <link rel="alternate" hreflang="en" href={new URL(enPath, Astro.url)} />}
 <link rel="alternate" hreflang="x-default" href={new URL(dePath, Astro.url)} />
 
 <!-- Theme init: runs before first paint to avoid a flash of the wrong theme -->

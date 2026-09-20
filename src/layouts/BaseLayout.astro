@@ -6,31 +6,37 @@ import SideBar from "../components/SideBar.astro";
 import { ViewTransitions } from "astro:transitions";
 
 import { SITE_TITLE, SITE_DESCRIPTION, TRANSITION_API } from "../config";
-import { getLocale } from "../lib/i18n";
+import { getLocale, useTranslations } from "../lib/i18n";
 
 const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
 
 const {
   image,
-  title = SITE_TITLE,
-  description = SITE_DESCRIPTION,
+  title,
+  pageTitle,
+  description = SITE_DESCRIPTION[locale],
   includeSidebar = true,
   sideBarActiveItemID,
   ogType,
+  germanOnly = false,
 } = Astro.props;
+
+const fullTitle =
+  title ?? (pageTitle ? `${pageTitle} · ${SITE_TITLE}` : `${SITE_TITLE} · ${t("site.tagline")}`);
 ---
 
 <!doctype html>
 <html lang={locale}>
   <head>
-    <BaseHead title={title} description={description} image={image} , ogType={ogType} />
+    <BaseHead title={fullTitle} description={description} image={image} ogType={ogType} germanOnly={germanOnly} />
     {TRANSITION_API && <ViewTransitions />}
   </head>
   <body>
     <div class="bg-base-100 drawer lg:drawer-open">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content bg-base-100">
-        <Header title={SITE_TITLE} />
+        <Header germanOnly={germanOnly} />
         <div class="md:flex md:justify-center">
           <main class="p-6 pt-10 lg:max-w-[900px] max-w-[100vw]">
             <slot />
@@ -38,7 +44,7 @@ const {
         </div>
         <Footer />
       </div>
-      {includeSidebar && <SideBar sideBarActiveItemID={sideBarActiveItemID} />}
+      {includeSidebar && <SideBar sideBarActiveItemID={sideBarActiveItemID} germanOnly={germanOnly} />}
     </div>
   </body>
 </html>

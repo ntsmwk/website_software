@@ -1,6 +1,8 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
 import LanguageToggle from "./LanguageToggle.astro";
+
+const { germanOnly = false } = Astro.props;
 ---
 
 <div
@@ -29,7 +31,7 @@ import LanguageToggle from "./LanguageToggle.astro";
         </svg>
     </a>
 
-    <LanguageToggle class="mx-1" />
+    <LanguageToggle class="mx-1" germanOnly={germanOnly} />
     <ThemeToggle class="mx-1" />
 
 </div>

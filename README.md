@@ -67,7 +67,7 @@ paint to avoid a flash of the wrong theme.
 
 ```
 src/
-├── pages/                  # index, projects, technologies, cv, imprint, privacy, 404
+├── pages/                  # index, projects, technologies, imprint, privacy, 404 (_cv is an unrouted scaffold)
 │   └── en/                 # thin re-exports for the English routes
 ├── layouts/
 │   └── BaseLayout.astro    # drawer shell: Header (mobile) / SideBar (desktop) / Footer

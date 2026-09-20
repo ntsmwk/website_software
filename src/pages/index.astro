@@ -11,14 +11,12 @@ const t = useTranslations(locale);
 
 const heroCopy = {
   de: {
-    tagline: "Software Architekt | Senior Software Engineer",
     bioHtml:
       "Selbstständiger <strong>Software Architekt</strong> und <strong>Senior Software Engineer</strong> im Web-Bereich. Seit mehr als 10 Jahren beschäftige ich mich damit, komplexe Geschäftsprozesse zu konzeptionieren, technisch umzusetzen und langfristig zu betreuen. Meine Kern-Kompetenz liegt vor allem in der Kombination von Technik, Wirtschaft und Team.",
     philosophyHtml:
       "Meine Grundphilosophie im Leben wie auch im Beruf ist klassisch oberösterreichisch &rdquo;Geht ned, gibts ned!&rdquo;.",
   },
   en: {
-    tagline: "Software Architect | Senior Software Engineer",
     bioHtml:
       "Independent <strong>Software Architect</strong> and <strong>Senior Software Engineer</strong> specializing in web technologies. For more than 10 years, I&rsquo;ve been designing complex business processes, implementing them technically, and maintaining them over the long term. My core strength lies in combining technology, business, and team.",
     philosophyHtml:
@@ -39,7 +37,7 @@ const coreTechnologies = coreTechnologyNames
 <BaseLayout sideBarActiveItemID="home">
   <div class="mt-5">
     <div class="text-5xl font-bold">DI Markus Weißenbek</div>
-    <div class="text-3xl py-3 font-bold">{heroCopy.tagline}</div>
+    <div class="text-3xl py-3 font-bold">{t("site.tagline")}</div>
     <div class="py-2">
       <text class="text-lg">
         <p class="text-justify py-2" set:html={heroCopy.bioHtml} />

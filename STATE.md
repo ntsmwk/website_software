@@ -7,7 +7,7 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 
 | what | sha | branch | note |
 |---|---|---|---|
-| tip | `f50573c` | `redesign` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
+| tip | `e646f33` | `redesign` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
 | live | `6943434` | `master` | deployed 2026-09-20 |
 
 ## 2. Where things stand (2026-09-20)
@@ -24,7 +24,7 @@ the user pushes, and each push deploys. The `redesign` branch is deleted locally
 | DE/EN routing via Astro i18n | ✅ `52c0f88` |
 | Housekeeping (photo, OG image, README) | ✅ `6ed3acb` |
 | Dark-mode logo fix | ✅ `d35caae` |
-| CV page | ⬜ not started, `src/pages/cv.astro` is 100 % Lorem ipsum |
+| CV page | ⬜ not started, `src/pages/_cv.astro` is an unrouted Lorem-ipsum scaffold |
 
 ## 3. Open work, in order
 
@@ -33,7 +33,7 @@ Move a row, don't add a second one for the same subject.
 | # | subject | status | notes |
 |---|---|---|---|
 | 1 | Session setup: `CLAUDE.md`, `STATE.md`, agents | ✅ | 2026-09-20 |
-| 2 | `/cv/` is built and publicly reachable with Lorem ipsum | ⬜ | on `master` too, so it is live today. Either build the real page or stop emitting the route until it exists. Quick win. |
+| 2 | `/cv/` is built and publicly reachable with Lorem ipsum | ✅ | 2026-09-20: route no longer emitted (`src/pages/_cv.astro` keeps the scaffold, underscore excludes it from routing); same pass fixed hreflang/toggle on German-only legal pages, localized `<title>`s and meta description, `/en` logo links, bilingual 404, footer gap |
 | 3 | Data refresh: stale/wrong text (see §5) | ⏳ | typos fixed 2026-09-20; remaining rows need the user |
 | 4 | CV page content | ⛔ | needs dates per project/employer, and the timeline shape decision (per project vs per employer). Education is out of scope by decision. |
 | 5 | Certifications on the CV page | ⛔ | list or drop the section |
@@ -63,10 +63,7 @@ Things a refresh pass should touch. Confirm the facts with the user where marked
 | `src/pages/index.astro` | "Seit mehr als 10 Jahren" — check the number is still right | yes |
 | `src/data/projects.ts` | no dates on any project; `featuredProjectIds` may not be the latest work | yes |
 | `src/data/technologies.ts` | "Frameworks" category mixes Jira/Confluence/UML/C4/Agile/Git/Docker; Git uses the GitLab logo | yes |
-| `src/config.ts` | `SITE_DESCRIPTION` is the generic "Website of Weißenbek Software e.U." (used for OG/meta) | yes |
 | `src/pages/imprint.astro` | "Zuletzt aktualisiert: 10.02.25"; verify address/phone/UID still current | yes |
-| `src/pages/404.astro` | English only, no locale handling | no |
-| `src/pages/cv.astro` | template placeholder, publicly served (see §3 #2) | — |
 | `README_old.md` | leftover template README | yes |
 
 ## 6. Traps ⚠️

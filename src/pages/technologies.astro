@@ -8,7 +8,7 @@ const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 ---
 
-<BaseLayout title="Technologien" sideBarActiveItemID="technologies">
+<BaseLayout pageTitle={t("technologies.title")} sideBarActiveItemID="technologies">
   <div class="text-3xl w-full font-bold mb-5">{t("technologies.title")}</div>
 
   {
