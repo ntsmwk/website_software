@@ -7,7 +7,7 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 
 | what | sha | branch | note |
 |---|---|---|---|
-| tip | `ec3a0ad` | `redesign` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
+| tip | `5352a2e` | `redesign` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
 | live | `fc0ffc9` | `master` | what weissenbek.at serves; nothing from `redesign` is pushed |
 
 ## 2. Where things stand (2026-09-20)
@@ -34,7 +34,7 @@ Move a row, don't add a second one for the same subject.
 |---|---|---|---|
 | 1 | Session setup: `CLAUDE.md`, `STATE.md`, agents | ✅ | 2026-09-20 |
 | 2 | `/cv/` is built and publicly reachable with Lorem ipsum | ⬜ | on `master` too, so it is live today. Either build the real page or stop emitting the route until it exists. Quick win. |
-| 3 | Data refresh: stale/wrong text (see §5) | ⬜ | cheap, do before merging |
+| 3 | Data refresh: stale/wrong text (see §5) | ⏳ | typos fixed 2026-09-20; remaining rows need the user |
 | 4 | CV page content | ⛔ | needs dates per project/employer, and the timeline shape decision (per project vs per employer). Education is out of scope by decision. |
 | 5 | Certifications on the CV page | ⛔ | list or drop the section |
 | 6 | Legal pages in English | ⛔ | German-authoritative + EN disclaimer, German-only, or full translation. Legal call, don't invent wording. |
@@ -56,16 +56,13 @@ Move a row, don't add a second one for the same subject.
 
 ## 5. Stale-data audit (2026-09-20, from reading the source)
 
-Things a refresh pass should touch. Confirm the facts with the user where marked.
+Things a refresh pass should touch. Confirm the facts with the user where marked. Fixed 2026-09-20: Energieausweiß ×2, Photovoltaik-Systemen, Datenautausch, "Letzten Projekte".
 
 | where | what | ask user? |
 |---|---|---|
 | `src/pages/index.astro` | "Seit mehr als 10 Jahren" — check the number is still right | yes |
-| `src/data/projects.ts` | "Energieausweiß" ×2 → "Energieausweis" (typo) | no |
-| `src/data/projects.ts` | "Photovoltaik-Systemen" → "Photovoltaik-Systeme" (grammar) | no |
 | `src/data/projects.ts` | no dates on any project; `featuredProjectIds` may not be the latest work | yes |
 | `src/data/technologies.ts` | "Frameworks" category mixes Jira/Confluence/UML/C4/Agile/Git/Docker; Git uses the GitLab logo | yes |
-| `src/i18n/ui.ts` | "Letzten Projekte" → "Letzte Projekte" | no |
 | `src/config.ts` | `SITE_DESCRIPTION` is the generic "Website of Weißenbek Software e.U." (used for OG/meta) | yes |
 | `src/pages/imprint.astro` | "Zuletzt aktualisiert: 10.02.25"; verify address/phone/UID still current | yes |
 | `src/pages/404.astro` | English only, no locale handling | no |

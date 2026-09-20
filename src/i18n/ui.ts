@@ -9,7 +9,7 @@ export const ui = {
     "nav.technologies": "Technologien",
     "nav.cv": "CV",
     "nav.contact": "Kontakt",
-    "home.latestProjects": "Letzten Projekte",
+    "home.latestProjects": "Letzte Projekte",
     "home.coreTechnologies": "Kern-Technologien",
     "home.allProjects": "Alle Projekte",
     "home.allTechnologies": "Alle Technologien",

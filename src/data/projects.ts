@@ -22,7 +22,7 @@ export const projects: Project[] = [
       en: "Energiewirtschaftlicher Datenaustauschdienst GmbH",
     },
     description: {
-      de: "Maßgeschneiderte Plattform zur Verwaltung der Energiemarktteilnehmer (Netzbetreiber, Strom- & Gas-Lieferanten, etc.) inkl. Anbindung (Ponton / AS4) an die Peer-2-Peer Datenautausch-Infrastruktur.",
+      de: "Maßgeschneiderte Plattform zur Verwaltung der Energiemarktteilnehmer (Netzbetreiber, Strom- & Gas-Lieferanten, etc.) inkl. Anbindung (Ponton / AS4) an die Peer-2-Peer Datenaustausch-Infrastruktur.",
       en: "Custom-built platform for managing energy market participants (grid operators, electricity & gas suppliers, etc.), including integration (Ponton / AS4) with the peer-to-peer data exchange infrastructure.",
     },
     role: { de: "Software Architekt", en: "Software Architect" },
@@ -51,7 +51,7 @@ export const projects: Project[] = [
     id: "portfolio-assistent",
     title: { de: "Portfolio Assistent", en: "Portfolio Assistent" },
     description: {
-      de: "Plattform zur Digitalisierung und Verwaltung von Immobilien-Portfolios basierend auf dem Energieausweiß.",
+      de: "Plattform zur Digitalisierung und Verwaltung von Immobilien-Portfolios basierend auf dem Energieausweis.",
       en: "Platform for digitizing and managing real estate portfolios based on the energy performance certificate.",
     },
     role: {
@@ -67,7 +67,7 @@ export const projects: Project[] = [
     id: "energyplus",
     title: { de: "Energy+ GmbH", en: "Energy+ GmbH" },
     description: {
-      de: "Steuerungs- und Visualisierungsplattform für B2C Photovoltaik-Systemen inkl. Smartphone-App.",
+      de: "Steuerungs- und Visualisierungsplattform für B2C Photovoltaik-Systeme inkl. Smartphone-App.",
       en: "Control and visualization platform for B2C photovoltaic systems, including a smartphone app.",
     },
     role: { de: "Software Architekt", en: "Software Architect" },
@@ -93,7 +93,7 @@ export const projects: Project[] = [
     id: "realmetrics",
     title: { de: "RealMetrics", en: "RealMetrics" },
     description: {
-      de: "Plattform zur Sanierungssimulation von Immobilien basierend auf Energieausweißen.",
+      de: "Plattform zur Sanierungssimulation von Immobilien basierend auf Energieausweisen.",
       en: "Platform for simulating building renovations based on energy performance certificates.",
     },
     role: {
