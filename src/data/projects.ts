@@ -1,3 +1,15 @@
+import type { ImageMetadata } from "astro";
+import EDALogo from "../assets/EDA.webp";
+import EULogo from "../assets/EU.webp";
+import bhbLogo from "../assets/bhb.svg";
+import energyplusLogo from "../assets/energyplus.webp";
+import jkuLogo from "../assets/jku.webp";
+import portfolioAssistentLogo from "../assets/portfolio-assistent.webp";
+import realmetricsLogo from "../assets/realmetrics.svg";
+import salzitLogo from "../assets/salzit.webp";
+import sylagonLogo from "../assets/sylagon.svg";
+import xaleonLogo from "../assets/xaleon.webp";
+
 export interface LocalizedText {
   de: string;
   en: string;
@@ -13,7 +25,7 @@ export interface Project {
   outcome?: LocalizedText;
   highlights?: LocalizedText[];
   duration?: LocalizedText;
-  image: string;
+  image: ImageMetadata;
   tags: string[];
 }
 
@@ -49,7 +61,7 @@ export const projects: Project[] = [
         en: "Integration with the EDA user portal for registering and administering energy communities (EEGs).",
       },
     ],
-    image: "/EDA.webp",
+    image: EDALogo,
     tags: ["Spring Boot", "Angular", "MS SQL Server", "Jira", "Tailwind", "OpenAPI"],
   },
   {
@@ -80,7 +92,7 @@ export const projects: Project[] = [
         en: "Built with Spring Boot and Angular.",
       },
     ],
-    image: "/EU.webp",
+    image: EULogo,
     tags: ["Spring Boot", "Angular", "MongoDB", "Bootstrap", "AS/4", "Accessibility"],
   },
   {
@@ -110,7 +122,7 @@ export const projects: Project[] = [
         en: "Core: automated digitisation and evaluation of energy performance certificates.",
       },
     ],
-    image: "/portfolio-assistent.webp",
+    image: portfolioAssistentLogo,
     tags: ["Spring Boot", "Angular", "MongoDB", "Tailwind", "OCR", "AWS"],
   },
   {
@@ -138,7 +150,7 @@ export const projects: Project[] = [
         en: "Goal: vendor-agnostic support for inverters and battery storage from different manufacturers.",
       },
     ],
-    image: "/energyplus.webp",
+    image: energyplusLogo,
     tags: ["Spring Boot", "Angular", "Influx", "Tailwind", "Ionic", "Kontron-Hardware"],
   },
   {
@@ -162,7 +174,7 @@ export const projects: Project[] = [
         en: "Extensions to the production and packaging feature, put into production at customers.",
       },
     ],
-    image: "/salzit.webp",
+    image: salzitLogo,
     tags: ["Svelte", "TypeScript", "Lantek", "Hardware"],
   },
   {
@@ -178,7 +190,7 @@ export const projects: Project[] = [
     },
     badge: { de: "Immobilien", en: "Real Estate" },
     url: "https://www.tech2b.at/news/startup-insight-mit-stefan-matheis-von-4metrics/",
-    image: "/realmetrics.svg",
+    image: realmetricsLogo,
     tags: ["Spring Boot", "Angular", "MongoDB", "Tailwind", "EU Taxonomy"],
   },
   {
@@ -216,7 +228,7 @@ export const projects: Project[] = [
         en: "Data protection aligned with the ethics commission.",
       },
     ],
-    image: "/bhb.svg",
+    image: bhbLogo,
     tags: ["NestJS", "Angular", "Redcap", "Data Protection"],
   },
   {
@@ -243,7 +255,7 @@ export const projects: Project[] = [
         en: "In-house NLP analyses the data and proposes the most suitable visualisations.",
       },
     ],
-    image: "/sylagon.svg",
+    image: sylagonLogo,
     tags: ["Spring Boot", "Angular", "MongoDB", "Data Visualization"],
   },
   {
@@ -274,7 +286,7 @@ export const projects: Project[] = [
         en: "FFG-funded, more than 12 partners.",
       },
     ],
-    image: "/jku.webp",
+    image: jkuLogo,
     tags: ["Spring Boot", "Angular", "MongoDB", "Decentralized Architecture", "Research Project"],
   },
   {
@@ -302,7 +314,7 @@ export const projects: Project[] = [
         en: "Multi-party computation for auction anonymity and semantic matching of offers.",
       },
     ],
-    image: "/jku.webp",
+    image: jkuLogo,
     tags: ["Spring Boot", "Angular", "MongoDB", "Decentralized Architecture", "Research Project"],
   },
   {
@@ -333,7 +345,7 @@ export const projects: Project[] = [
         en: "Intercom API integration via OAuth 2.0.",
       },
     ],
-    image: "/xaleon.webp",
+    image: xaleonLogo,
     tags: ["Spring Boot", "Angular", "MongoDB", "Bootstrap"],
   },
 ];

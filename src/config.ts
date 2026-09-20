@@ -7,4 +7,3 @@ export const SITE_DESCRIPTION = {
   en: 'Weißenbek Software e.U. – Markus Weißenbek, independent software architect and senior software engineer from Linz. Projects, technologies, contact.',
 };
 export const GENERATE_SLUG_FROM_TITLE = true
-export const TRANSITION_API = true

@@ -7,8 +7,8 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 
 | what | sha | branch | note |
 |---|---|---|---|
-| tip | `acb7c5b` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
-| live | `2ac376d` | `master` | deployed 2026-09-20, tenth deploy: English legal pages, light share image |
+| tip | `b0d5450` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
+| live | `b0d5450` | `master` | deployed 2026-09-20, eleventh deploy: BRZ logo, brz.gv.at |
 
 ## 2. Where things stand (2026-09-20)
 
@@ -51,6 +51,7 @@ Move a row, don't add a second one for the same subject.
 | 20 | BRZ: correct domain is brz.gv.at (brz.at is an unrelated ERP vendor; the CV has it wrong); logo in the client row | ✅ | 2026-09-20 |
 | 18 | Share image (Open Graph) regenerated in the light style | ✅ | 2026-09-20 |
 | 17 | Availability line | ✅ | not wanted, user decision 2026-09-20 |
+| 19 | Lighthouse pass: contrast, toggle label, font preload + fallback metrics, Astro image pipeline, no view transitions, Netlify headers | ✅ | 2026-09-20 |
 
 ## 4. Decisions made, don't re-litigate
 
@@ -91,6 +92,7 @@ Things a refresh pass should touch. Confirm the facts with the user where marked
 - `dist/` is gitignored and stale (July); rebuild before judging anything from it.
 - New project logos: nothing to do, the white plate in `HorizontalCard.astro` handles contrast.
 - No dark mode; `data-theme="light"` is static in `BaseLayout.astro`.
+- Images live in `src/assets` and go through `astro:assets`; `public/` is only for social_img, favicon, logo.svg, robots.
 
 ## 7. How to verify
 

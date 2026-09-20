@@ -4,7 +4,7 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ['"Inter Variable"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				sans: ['"Inter Variable"', '"Inter Fallback"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
 				serif: ['"Fraunces Variable"', 'Georgia', 'serif'],
 				mono: ['"JetBrains Mono Variable"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
 			},

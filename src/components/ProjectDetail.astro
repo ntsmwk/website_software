@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
 import { projects, type Project } from "../data/projects";
 import { getLocale, useTranslations, localizedHref, localize } from "../lib/i18n";
 import type { LocalizedText } from "../data/projects";
@@ -28,13 +29,19 @@ const hostname = project.url ? new URL(project.url).hostname.replace(/^www\./, "
       >{t("project.back")}</a
     >
 
-    <p class="mb-4 mt-8 font-mono text-xs uppercase tracking-widest text-base-content/60">
+    <p class="mb-4 mt-8 font-mono text-xs uppercase tracking-widest text-base-content/70">
       {l(project.badge)} · {l(project.role)}
     </p>
     <h1 class="break-words text-4xl leading-[1.12] md:text-5xl">{l(project.title)}</h1>
 
     <div class="mt-6 inline-flex h-24 items-center justify-center rounded border border-base-300 bg-white px-6 py-4">
-      <img src={project.image} alt={l(project.title)} class="h-full w-auto max-w-[16rem] object-contain" />
+      <Image
+        src={project.image}
+        alt={l(project.title)}
+        width={Math.min(416, project.image.width)}
+        loading="eager"
+        class="h-full w-auto max-w-[16rem] object-contain"
+      />
     </div>
 
     <p class="mt-8 text-lg">{l(project.description)}</p>
@@ -62,29 +69,29 @@ const hostname = project.url ? new URL(project.url).hostname.replace(/^www\./, "
 
     <dl class="mt-10 grid gap-x-8 gap-y-4 border-t border-base-300 pt-6 md:grid-cols-2">
       <div>
-        <dt class="text-sm text-base-content/60">{t("project.role")}</dt>
+        <dt class="text-sm text-base-content/70">{t("project.role")}</dt>
         <dd>{l(project.role)}</dd>
       </div>
       {
         project.duration && (
           <div>
-            <dt class="text-sm text-base-content/60">{t("project.duration")}</dt>
+            <dt class="text-sm text-base-content/70">{t("project.duration")}</dt>
             <dd>{l(project.duration)}</dd>
           </div>
         )
       }
       <div>
-        <dt class="text-sm text-base-content/60">{t("project.industry")}</dt>
+        <dt class="text-sm text-base-content/70">{t("project.industry")}</dt>
         <dd>{l(project.badge)}</dd>
       </div>
       <div>
-        <dt class="text-sm text-base-content/60">{t("project.technologies")}</dt>
+        <dt class="text-sm text-base-content/70">{t("project.technologies")}</dt>
         <dd class="font-mono text-sm">{project.tags.join(" · ")}</dd>
       </div>
       {
         project.url && (
           <div>
-            <dt class="text-sm text-base-content/60">{t("project.website")}</dt>
+            <dt class="text-sm text-base-content/70">{t("project.website")}</dt>
             <dd>
               <a class="link link-primary" href={project.url} target="_blank" rel="noopener">
                 {hostname} ↗

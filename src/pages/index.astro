@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import profile from "../assets/profile.webp";
 import { home } from "../data/home";
 import { services } from "../data/services";
 import { clients } from "../data/clients";
@@ -20,7 +22,7 @@ const detailHref = (id: string) => localizedHref(`/projects/${id}/`, locale);
 
 const mail = "mailto:markus@weissenbek.at";
 const linkedIn = "https://www.linkedin.com/in/markus-wei%C3%9Fenbek-322060157";
-const eyebrowClass = "mb-4 font-mono text-xs uppercase tracking-widest text-base-content/60";
+const eyebrowClass = "mb-4 font-mono text-xs uppercase tracking-widest text-base-content/70";
 ---
 
 <BaseLayout>
@@ -46,7 +48,7 @@ const eyebrowClass = "mb-4 font-mono text-xs uppercase tracking-widest text-base
                 title={client.name}
                 class="grayscale opacity-70 transition hover:opacity-100 hover:grayscale-0"
               >
-                <img src={client.logo} alt={client.name} class="h-7 w-auto md:h-8" loading="lazy" />
+                <Image src={client.logo} alt={client.name} height={32} densities={[1, 2]} class="h-7 w-auto md:h-8" />
               </a>
             );
           })
@@ -83,7 +85,7 @@ const eyebrowClass = "mb-4 font-mono text-xs uppercase tracking-widest text-base
               <h3 class="font-semibold">
                 <a class="link-hover" href={detailHref(project.id)}>{l(project.title)}</a>
               </h3>
-              <p class="text-sm text-base-content/60">{l(project.badge)}</p>
+              <p class="text-sm text-base-content/70">{l(project.badge)}</p>
             </div>
             <div class="space-y-2">
               <p>{l(project.description)}</p>
@@ -95,7 +97,7 @@ const eyebrowClass = "mb-4 font-mono text-xs uppercase tracking-widest text-base
                   {l(home.outcomeLabel)} {l(project.outcome)}
                 </p>
               )}
-              <p class="font-mono text-xs text-base-content/60">{project.tags.join(" · ")}</p>
+              <p class="font-mono text-xs text-base-content/70">{project.tags.join(" · ")}</p>
             </div>
           </article>
         ))
@@ -108,11 +110,10 @@ const eyebrowClass = "mb-4 font-mono text-xs uppercase tracking-widest text-base
     <section>
       <h2 class="mb-6 text-3xl">{l(home.aboutTitle)}</h2>
       <div class="grid items-start gap-8 md:grid-cols-[160px_1fr]">
-        <img
-          src="/profile.webp"
+        <Image
+          src={profile}
           alt="Markus Weißenbek"
-          width="160"
-          height="160"
+          width={Math.min(320, profile.width)}
           class="h-auto w-[160px] rounded border border-base-300"
         />
         <div class="space-y-4">

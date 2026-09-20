@@ -69,10 +69,19 @@ in `BaseLayout.astro`; there is no dark mode and no toggle. Headings use
 Fraunces (serif), body Inter, stacks and tags JetBrains Mono, all self-hosted
 via `@fontsource-variable/*` imports in `src/styles/global.css`.
 
+## Hosting
+
+Netlify serves `dist/`. `netlify.toml` only sets response headers (immutable
+cache for `/_astro/*`, security headers incl. a CSP); build settings stay in the
+Netlify dashboard. Images live in `src/assets/` and go through `astro:assets`
+(`<Image>` emits width/height and downsized variants); `public/` holds only
+`social_img.webp`, `favicon.svg`, `logo.svg` and `robots.txt`.
+
 ## Project structure
 
 ```
 src/
+├── assets/                 # logos, icons, photo; imported by the data files, served via astro:assets
 ├── pages/                  # index, projects, technologies, cv, imprint, privacy, 404
 │   ├── projects/[id].astro # one detail page per project (paths from src/lib/projectPaths.ts)
 │   └── en/                 # thin re-exports for the English routes (incl. en/projects/[id].astro)

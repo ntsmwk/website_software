@@ -10,7 +10,7 @@ const href = alternatePath(Astro.url.pathname, target);
 
 <a
   href={href}
-  aria-label="Switch language"
+  aria-label={target === "en" ? "EN: Switch to English" : "DE: Auf Deutsch wechseln"}
   title={target === "en" ? "Switch to English" : "Auf Deutsch wechseln"}
   class={`btn btn-ghost btn-square font-mono text-sm ${className}`}
 >

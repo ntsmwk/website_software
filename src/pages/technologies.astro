@@ -17,7 +17,7 @@ const t = useTranslations(locale);
         <h2 class="text-2xl w-full mb-5 mt-5">{category.name[locale]}</h2>
         <div class="flex flex-row flex-wrap">
           {category.items.map((item) => (
-            <RoundIcon name={item.name} img={item.img} format={item.format} url={item.url} />
+            <RoundIcon name={item.name} img={item.img} url={item.url} />
           ))}
         </div>
       </>

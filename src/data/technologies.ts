@@ -1,9 +1,34 @@
+import type { ImageMetadata } from "astro";
+import springIcon from "../assets/technologies/spring.webp";
+import angularIcon from "../assets/technologies/angular.webp";
+import tailwindIcon from "../assets/technologies/tailwind.webp";
+import jiraIcon from "../assets/technologies/jira.webp";
+import confluenceIcon from "../assets/technologies/confluence.webp";
+import umlIcon from "../assets/technologies/uml.webp";
+import c4Icon from "../assets/technologies/c4.webp";
+import agileIcon from "../assets/technologies/agile.webp";
+import gitlabIcon from "../assets/technologies/gitlab.webp";
+import dockerIcon from "../assets/technologies/docker.webp";
+import openapiIcon from "../assets/technologies/openapi.webp";
+import javaIcon from "../assets/technologies/java.webp";
+import pythonIcon from "../assets/technologies/python.webp";
+import htmlIcon from "../assets/technologies/html.webp";
+import jsIcon from "../assets/technologies/js.webp";
+import typescriptIcon from "../assets/technologies/typescript.webp";
+import cssIcon from "../assets/technologies/css.webp";
+import sqlserverIcon from "../assets/technologies/sqlserver.webp";
+import mariadbIcon from "../assets/technologies/mariadb.webp";
+import mysqlIcon from "../assets/technologies/mysql.webp";
+import mongodbIcon from "../assets/technologies/mongodb.webp";
+import influxIcon from "../assets/technologies/influx.webp";
+import awsIcon from "../assets/technologies/aws.webp";
+import googleMapsIcon from "../assets/technologies/google-maps.webp";
+import claudeIcon from "../assets/technologies/claude.svg";
 import type { LocalizedText } from "./projects";
 
 export interface TechItem {
   name: string;
-  img: string;
-  format: string;
+  img: ImageMetadata;
   url: string;
 }
 
@@ -18,55 +43,55 @@ export const technologyCategories: TechCategory[] = [
     id: "frameworks",
     name: { de: "Frameworks", en: "Frameworks" },
     items: [
-      { name: "Spring Boot", img: "/technologies/spring.webp", format: "webp", url: "https://spring.io/projects/spring-boot" },
-      { name: "Angular", img: "/technologies/angular.webp", format: "webp", url: "https://angular.dev/" },
-      { name: "Tailwind", img: "/technologies/tailwind.webp", format: "webp", url: "https://tailwindcss.com/" },
-      { name: "Jira", img: "/technologies/jira.webp", format: "webp", url: "https://www.atlassian.com/software/jira/" },
-      { name: "Confluence", img: "/technologies/confluence.webp", format: "webp", url: "https://www.atlassian.com/software/confluence/" },
-      { name: "UML", img: "/technologies/uml.webp", format: "webp", url: "https://www.uml.org/" },
-      { name: "C4 Model", img: "/technologies/c4.webp", format: "webp", url: "https://c4model.com/" },
-      { name: "Agile Methodik", img: "/technologies/agile.webp", format: "webp", url: "https://en.wikipedia.org/wiki/Agile_software_development/" },
-      { name: "Git", img: "/technologies/gitlab.webp", format: "webp", url: "https://git-scm.com/" },
-      { name: "Docker", img: "/technologies/docker.webp", format: "webp", url: "https://www.docker.com/" },
-      { name: "Open API", img: "/technologies/openapi.webp", format: "webp", url: "https://swagger.io" },
+      { name: "Spring Boot", img: springIcon, url: "https://spring.io/projects/spring-boot" },
+      { name: "Angular", img: angularIcon, url: "https://angular.dev/" },
+      { name: "Tailwind", img: tailwindIcon, url: "https://tailwindcss.com/" },
+      { name: "Jira", img: jiraIcon, url: "https://www.atlassian.com/software/jira/" },
+      { name: "Confluence", img: confluenceIcon, url: "https://www.atlassian.com/software/confluence/" },
+      { name: "UML", img: umlIcon, url: "https://www.uml.org/" },
+      { name: "C4 Model", img: c4Icon, url: "https://c4model.com/" },
+      { name: "Agile Methodik", img: agileIcon, url: "https://en.wikipedia.org/wiki/Agile_software_development/" },
+      { name: "Git", img: gitlabIcon, url: "https://git-scm.com/" },
+      { name: "Docker", img: dockerIcon, url: "https://www.docker.com/" },
+      { name: "Open API", img: openapiIcon, url: "https://swagger.io" },
     ],
   },
   {
     id: "languages",
     name: { de: "Sprachen", en: "Languages" },
     items: [
-      { name: "Java", img: "/technologies/java.webp", format: "webp", url: "https://www.java.com" },
-      { name: "Python", img: "/technologies/python.webp", format: "webp", url: "https://www.python.org/" },
-      { name: "HTML", img: "/technologies/html.webp", format: "webp", url: "https://en.wikipedia.org/wiki/HTML" },
-      { name: "JavaScript", img: "/technologies/js.webp", format: "webp", url: "https://www.javascript.com" },
-      { name: "TypeScript", img: "/technologies/typescript.webp", format: "webp", url: "https://www.typescriptlang.org/" },
-      { name: "CSS", img: "/technologies/css.webp", format: "webp", url: "https://en.wikipedia.org/wiki/CSS" },
+      { name: "Java", img: javaIcon, url: "https://www.java.com" },
+      { name: "Python", img: pythonIcon, url: "https://www.python.org/" },
+      { name: "HTML", img: htmlIcon, url: "https://en.wikipedia.org/wiki/HTML" },
+      { name: "JavaScript", img: jsIcon, url: "https://www.javascript.com" },
+      { name: "TypeScript", img: typescriptIcon, url: "https://www.typescriptlang.org/" },
+      { name: "CSS", img: cssIcon, url: "https://en.wikipedia.org/wiki/CSS" },
     ],
   },
   {
     id: "databases",
     name: { de: "Datenbanken", en: "Databases" },
     items: [
-      { name: "SQL Server", img: "/technologies/sqlserver.webp", format: "webp", url: "https://www.microsoft.com/en-us/sql-server" },
-      { name: "MariaDB", img: "/technologies/mariadb.webp", format: "webp", url: "https://mariadb.org/" },
-      { name: "MySQL", img: "/technologies/mysql.webp", format: "webp", url: "https://www.mysql.com/" },
-      { name: "MongoDB", img: "/technologies/mongodb.webp", format: "webp", url: "https://www.mongodb.com/" },
-      { name: "InfluxDB", img: "/technologies/influx.webp", format: "webp", url: "https://www.influxdata.com/" },
+      { name: "SQL Server", img: sqlserverIcon, url: "https://www.microsoft.com/en-us/sql-server" },
+      { name: "MariaDB", img: mariadbIcon, url: "https://mariadb.org/" },
+      { name: "MySQL", img: mysqlIcon, url: "https://www.mysql.com/" },
+      { name: "MongoDB", img: mongodbIcon, url: "https://www.mongodb.com/" },
+      { name: "InfluxDB", img: influxIcon, url: "https://www.influxdata.com/" },
     ],
   },
   {
     id: "cloud",
     name: { de: "Cloud-Dienste", en: "Cloud Services" },
     items: [
-      { name: "AWS", img: "/technologies/aws.webp", format: "webp", url: "https://aws.amazon.com/" },
-      { name: "Google API", img: "/technologies/google-maps.webp", format: "webp", url: "https://developers.google.com/maps" },
+      { name: "AWS", img: awsIcon, url: "https://aws.amazon.com/" },
+      { name: "Google API", img: googleMapsIcon, url: "https://developers.google.com/maps" },
     ],
   },
   {
     id: "ai",
     name: { de: "KI-Werkzeuge", en: "AI Tools" },
     items: [
-      { name: "Claude", img: "/technologies/claude.svg", format: "svg", url: "https://claude.ai" },
+      { name: "Claude", img: claudeIcon, url: "https://claude.ai" },
     ],
   },
 ];

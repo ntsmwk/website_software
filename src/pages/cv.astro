@@ -28,7 +28,7 @@ const linkedProjects = (ids: string[]) =>
             <div>
               <p>
                 <span class="font-semibold">{l(entry.employer)}</span>
-                <span class="text-base-content/60"> · {l(entry.location)}</span>
+                <span class="text-base-content/70"> · {l(entry.location)}</span>
               </p>
               <p>{l(entry.role)}</p>
               <ul class="mt-2 list-disc space-y-1 pl-5 text-base-content/80">
@@ -64,7 +64,7 @@ const linkedProjects = (ids: string[]) =>
             <div>
               <p>
                 <span class="font-semibold">{l(entry.institution)}</span>
-                <span class="text-base-content/60"> · {l(entry.location)}</span>
+                <span class="text-base-content/70"> · {l(entry.location)}</span>
               </p>
               <p>{l(entry.degree)}</p>
               <ul class="mt-2 list-disc space-y-1 pl-5 text-base-content/80">
@@ -84,7 +84,7 @@ const linkedProjects = (ids: string[]) =>
         {
           cv.skills.map((group) => (
             <>
-              <dt class="text-sm text-base-content/60">{l(group.name)}</dt>
+              <dt class="text-sm text-base-content/70">{l(group.name)}</dt>
               <dd class="font-mono text-sm">{group.items.join(" · ")}</dd>
             </>
           ))

@@ -1,23 +1,17 @@
 ---
-const { name, img, format, url } = Astro.props;
 import { Image } from "astro:assets";
+const { name, img, url } = Astro.props;
 ---
 
 <a href={url} target="_blank" class="p-4">
     <div class="flex flex-col items-center transition ease-in-out hover:scale-[102%]">
         <div class="w-[7rem] h-[7rem] bg-white rounded border border-base-300 p-3 flex items-center justify-center">
-            {
-                (
-                    <Image
-                        class="w-full h-full object-contain"
-                        format={format}
-                        width={100}
-                        height={100}
-                        src={img}
-                        alt={name}
-                    />
-                )
-            }
+            <Image
+                class="w-full h-full object-contain"
+                width={Math.min(224, img.width)}
+                src={img}
+                alt={name}
+            />
         </div>
         <div class="mt-auto mx-auto">
             <p class="font-semibold">{name}</p>

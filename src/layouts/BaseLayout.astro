@@ -2,9 +2,8 @@
 import BaseHead from "../components/BaseHead.astro";
 import TopNav from "../components/TopNav.astro";
 import Footer from "../components/Footer.astro";
-import { ViewTransitions } from "astro:transitions";
 
-import { SITE_TITLE, SITE_DESCRIPTION, TRANSITION_API } from "../config";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 import { getLocale, useTranslations } from "../lib/i18n";
 
 const locale = getLocale(Astro.currentLocale);
@@ -26,7 +25,6 @@ const fullTitle =
 <html lang={locale} data-theme="light">
   <head>
     <BaseHead title={fullTitle} description={description} image={image} ogType={ogType} />
-    {TRANSITION_API && <ViewTransitions />}
   </head>
   <body class="flex min-h-screen flex-col bg-base-100 text-base-content">
     <TopNav />
