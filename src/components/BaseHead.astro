@@ -27,17 +27,23 @@ const enPath = alternatePath(Astro.url.pathname, 'en');
 {!germanOnly && <link rel="alternate" hreflang="en" href={new URL(enPath, Astro.url)} />}
 <link rel="alternate" hreflang="x-default" href={new URL(dePath, Astro.url)} />
 
-<!-- Theme init: runs before first paint to avoid a flash of the wrong theme -->
+<!-- Theme init: runs before first paint to avoid a flash of the wrong theme.
+     View transitions swap in a fresh <html> without data-theme, so the same
+     value is stamped onto the incoming document before every swap. -->
 <script is:inline>
   (function () {
-    const stored = localStorage.getItem('theme');
-    const theme =
-      stored === 'light' || stored === 'dark'
+    function resolveTheme() {
+      const stored = localStorage.getItem('theme');
+      return stored === 'light' || stored === 'dark'
         ? stored
         : window.matchMedia('(prefers-color-scheme: light)').matches
           ? 'light'
           : 'dark';
-    document.documentElement.dataset.theme = theme;
+    }
+    document.documentElement.dataset.theme = resolveTheme();
+    document.addEventListener('astro:before-swap', (ev) => {
+      ev.newDocument.documentElement.dataset.theme = resolveTheme();
+    });
   })();
 </script>
 

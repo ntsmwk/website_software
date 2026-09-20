@@ -7,7 +7,7 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 
 | what | sha | branch | note |
 |---|---|---|---|
-| tip | `893a5f5` | `redesign` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
+| tip | `bc4299e` | `redesign` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
 | live | `893a5f5` | `master` | deployed 2026-09-20, second deploy: /cv/ gone, localized titles, valid markup |
 
 ## 2. Where things stand (2026-09-20)
@@ -75,6 +75,8 @@ Things a refresh pass should touch. Confirm the facts with the user where marked
 - `dist/` is gitignored and stale (July); rebuild before judging anything from it.
 - New project logos: nothing to do, the white plate in `HorizontalCard.astro` handles contrast.
 - `README.md` still says "no `/en/` legal pages exist yet" — keep it true or update it with #6.
+- View transitions drop `<html data-theme>` on navigation; `BaseHead.astro` re-applies it in an
+  `astro:before-swap` listener. Any future attribute set on `<html>` by JS needs the same treatment.
 
 ## 7. How to verify
 
