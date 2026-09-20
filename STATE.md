@@ -8,7 +8,7 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 | what | sha | branch | note |
 |---|---|---|---|
 | tip | `3583272` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
-| live | `3583272` | `master` | deployed 2026-09-20, eighth deploy: CV-enriched project pages, BRZ, slash links |
+| live | `5a43683` | `master` | deployed 2026-09-20, ninth deploy: CV page |
 
 ## 2. Where things stand (2026-09-20)
 
