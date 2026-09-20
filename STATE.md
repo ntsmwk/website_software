@@ -8,7 +8,7 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 | what | sha | branch | note |
 |---|---|---|---|
 | tip | `b0d5450` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
-| live | `b0d5450` | `master` | deployed 2026-09-20, eleventh deploy: BRZ logo, brz.gv.at |
+| live | `a71750b` | `master` | deployed 2026-09-20, twelfth deploy: Lighthouse fixes, security headers |
 
 ## 2. Where things stand (2026-09-20)
 
