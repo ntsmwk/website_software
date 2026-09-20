@@ -8,7 +8,7 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 | what | sha | branch | note |
 |---|---|---|---|
 | tip | `bc4299e` | `redesign` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
-| live | `893a5f5` | `master` | deployed 2026-09-20, second deploy: /cv/ gone, localized titles, valid markup |
+| live | `792287b` | `master` | deployed 2026-09-20, third deploy: theme persists across navigation |
 
 ## 2. Where things stand (2026-09-20)
 
