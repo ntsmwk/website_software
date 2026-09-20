@@ -12,6 +12,15 @@
     line-gap-override: 0%;
     size-adjust: 107.4%;
 }
+
+@font-face {
+    font-family: 'Fraunces Fallback';
+    src: local('Georgia');
+    size-adjust: 104%;
+    ascent-override: 92%;
+    descent-override: 24%;
+    line-gap-override: 0%;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

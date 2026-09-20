@@ -7,7 +7,7 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 
 | what | sha | branch | note |
 |---|---|---|---|
-| tip | `b0d5450` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
+| tip | `6b83412` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
 | live | `a71750b` | `master` | deployed 2026-09-20, twelfth deploy: Lighthouse fixes, security headers |
 
 ## 2. Where things stand (2026-09-20)
@@ -51,7 +51,7 @@ Move a row, don't add a second one for the same subject.
 | 20 | BRZ: correct domain is brz.gv.at (brz.at is an unrelated ERP vendor; the CV has it wrong); logo in the client row | ✅ | 2026-09-20 |
 | 18 | Share image (Open Graph) regenerated in the light style | ✅ | 2026-09-20 |
 | 17 | Availability line | ✅ | not wanted, user decision 2026-09-20 |
-| 19 | Lighthouse pass: contrast, toggle label, font preload + fallback metrics, Astro image pipeline, no view transitions, Netlify headers | ✅ | 2026-09-20 |
+| 19 | Lighthouse pass: contrast, toggle label, font preload + fallback metrics, Astro image pipeline, no view transitions, Netlify headers | ✅ | 2026-09-20. CSP font fix, preloads trimmed to Fraunces, plate images sized (2026-09-20) |
 
 ## 4. Decisions made, don't re-litigate
 

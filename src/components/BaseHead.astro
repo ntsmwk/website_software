@@ -2,9 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
-import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 import frauncesLatin from '@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2?url';
-import frauncesLatinItalic from '@fontsource-variable/fraunces/files/fraunces-latin-wght-italic.woff2?url';
 import { alternatePath } from '../lib/i18n';
 
 export interface Props {
@@ -25,9 +23,7 @@ const enPath = alternatePath(Astro.url.pathname, 'en');
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
-<link rel="preload" as="font" type="font/woff2" crossorigin href={interLatin} />
 <link rel="preload" as="font" type="font/woff2" crossorigin href={frauncesLatin} />
-<link rel="preload" as="font" type="font/woff2" crossorigin href={frauncesLatinItalic} />
 <link rel="alternate" hreflang="de" href={new URL(dePath, Astro.url)} />
 <link rel="alternate" hreflang="en" href={new URL(enPath, Astro.url)} />
 <link rel="alternate" hreflang="x-default" href={new URL(dePath, Astro.url)} />

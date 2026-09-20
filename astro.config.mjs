@@ -13,5 +13,7 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
-  integrations: [sitemap(), tailwind({ applyBaseStyles: false })]
+  integrations: [sitemap(), tailwind({ applyBaseStyles: false })],
+  // never inline fonts as data: URIs; the CSP's font-src 'self' would block them
+  vite: { build: { assetsInlineLimit: 0 } },
 });
