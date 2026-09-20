@@ -16,7 +16,6 @@ const {
   pageTitle,
   description = SITE_DESCRIPTION[locale],
   ogType,
-  germanOnly = false,
 } = Astro.props;
 
 const fullTitle =
@@ -26,11 +25,11 @@ const fullTitle =
 <!doctype html>
 <html lang={locale} data-theme="light">
   <head>
-    <BaseHead title={fullTitle} description={description} image={image} ogType={ogType} germanOnly={germanOnly} />
+    <BaseHead title={fullTitle} description={description} image={image} ogType={ogType} />
     {TRANSITION_API && <ViewTransitions />}
   </head>
   <body class="flex min-h-screen flex-col bg-base-100 text-base-content">
-    <TopNav germanOnly={germanOnly} />
+    <TopNav />
     <main class="mx-auto w-full max-w-[1040px] flex-1 px-5 py-10 md:px-9">
       <slot />
     </main>

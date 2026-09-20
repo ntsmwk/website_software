@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { translationNote, type LegalPage } from "../data/legal";
+import { getLocale, localize } from "../lib/i18n";
+import type { LocalizedText } from "../data/projects";
+
+interface Props {
+  page: LegalPage;
+  pageTitle: string;
+}
+
+const { page, pageTitle } = Astro.props;
+
+const locale = getLocale(Astro.currentLocale);
+const l = (field: LocalizedText) => localize(field, locale);
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <div class="max-w-[720px]">
+    {locale === "en" && <p class="mb-6 text-sm text-base-content/70">{translationNote}</p>}
+    <h1 class="text-3xl">{l(page.title)}</h1>
+    {
+      page.sections.map((section) => (
+        <section class="mt-8">
+          {section.heading && <h2 class="mb-2 text-xl">{l(section.heading)}</h2>}
+          <div class="space-y-3" set:html={l(section.html)} />
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>

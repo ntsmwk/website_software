@@ -37,6 +37,7 @@ typed data files:
 - `src/data/services.ts` — the three service columns on the home page
 - `src/data/clients.ts` — client logo row on the home page (linked via `projectId`)
 - `src/data/cv.ts` — CV page: summary, experience, education, skills
+- `src/data/legal.ts` — Impressum and Datenschutzerklärung sections, both languages
 
 Each text field is a `{ de: string, en: string }` pair. To add or edit a
 project or technology, edit these files; the Home, Projects, and
@@ -56,8 +57,9 @@ German counterpart — the underlying page component reads
 `Astro.currentLocale` itself (via `src/lib/i18n.ts`) and picks the right
 language, so there's no duplicated markup to keep in sync.
 
-The Impressum and Datenschutzerklärung pages are German-only for now
-(no `/en/` legal pages exist yet).
+The Impressum and Datenschutzerklärung exist in both languages; their copy
+lives in `src/data/legal.ts` (German authoritative, English a convenience
+translation with a note saying so), rendered by `LegalPage.astro`.
 
 ## Theming
 
@@ -79,7 +81,7 @@ src/
 ├── components/
 │   ├── HorizontalCard.astro, RoundIcon.astro, ProjectDetail.astro
 │   ├── Logo.astro, LanguageToggle.astro
-│   └── TopNav.astro, Footer.astro, BaseHead.astro
+│   └── TopNav.astro, Footer.astro, BaseHead.astro, LegalPage.astro
 ├── data/
 │   ├── projects.ts, technologies.ts   # bilingual content
 ├── i18n/

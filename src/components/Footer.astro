@@ -1,5 +1,5 @@
 ---
-import { getLocale, useTranslations } from "../lib/i18n";
+import { getLocale, useTranslations, localizedHref } from "../lib/i18n";
 
 const today = new Date();
 const locale = getLocale(Astro.currentLocale);
@@ -13,8 +13,8 @@ const t = useTranslations(locale);
     <div>&copy; {today.getFullYear()} Weißenbek Software e.U.</div>
 
     <div class="flex gap-4 md:justify-center">
-      <a href="/imprint/" class="link-hover link">{t("footer.imprint")}</a>
-      <a href="/privacy/" class="link-hover link">{t("footer.privacy")}</a>
+      <a href={localizedHref("/imprint", locale)} class="link-hover link">{t("footer.imprint")}</a>
+      <a href={localizedHref("/privacy", locale)} class="link-hover link">{t("footer.privacy")}</a>
     </div>
 
     <div class="flex items-center gap-4 md:justify-end">

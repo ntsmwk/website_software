@@ -1,11 +1,11 @@
 ---
 import { getLocale, alternatePath } from "../lib/i18n";
 
-const { class: className = "", germanOnly = false } = Astro.props;
+const { class: className = "" } = Astro.props;
 
 const locale = getLocale(Astro.currentLocale);
 const target = locale === "en" ? "de" : "en";
-const href = germanOnly ? "/en/" : alternatePath(Astro.url.pathname, target);
+const href = alternatePath(Astro.url.pathname, target);
 ---
 
 <a

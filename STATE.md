@@ -7,7 +7,7 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 
 | what | sha | branch | note |
 |---|---|---|---|
-| tip | `3583272` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
+| tip | `fee57c2` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
 | live | `5a43683` | `master` | deployed 2026-09-20, ninth deploy: CV page |
 
 ## 2. Where things stand (2026-09-20)
@@ -37,8 +37,8 @@ Move a row, don't add a second one for the same subject.
 | 3 | Data refresh: stale/wrong text (see §5) | ⏳ | typos fixed 2026-09-20; remaining rows need the user |
 | 4 | CV page content | ✅ | 2026-09-20, built from `docs/cv-facts.md`: timeline per employer, education included, projects link to the detail pages. Source PDF stays gitignored. |
 | 5 | Certifications on the CV page | ✅ | no section, none in CV |
-| 6 | Legal pages in English | ⛔ | German-authoritative + EN disclaimer, German-only, or full translation. Legal call, don't invent wording. |
-| 7 | Downloadable CV PDF | ⛔ | wanted or not |
+| 6 | Legal pages in English | ✅ | 2026-09-20, German authoritative + EN convenience translation |
+| 7 | Downloadable CV PDF | ✅ | no PDF, user decision |
 | 8 | Sign-off on accent `#2de2e6` / Inter + JetBrains Mono | ⛔ | nothing pushed back yet |
 | 9 | Merge `redesign` → `master`, push, verify live | ✅ | 2026-09-20, fast-forward to `6943434`, live within ~16 s, all 8 routes 200 in both languages |
 | 10 | Remove `README_old.md` (original Astrofy README) | ⬜ | trivial, ask first |
@@ -48,6 +48,8 @@ Move a row, don't add a second one for the same subject.
 | 14 | Option A transformation, step 2: home page as one-pager (hero, logos, services, cases, about, contact) | ✅ | 2026-09-20, shipped with draft copy; outcome lines still empty (see §5) |
 | 15 | Project detail pages, cards link internally, external link on the detail page | ✅ | 2026-09-20; highlights/outcome fields exist but are empty |
 | 16 | Project data enriched from the CV: durations, highlights, BRZ correction; trailing-slash links | ✅ | 2026-09-20 |
+| 18 | Share image (Open Graph) regenerated in the light style | ✅ | 2026-09-20 |
+| 17 | Availability line | ✅ | not wanted, user decision 2026-09-20 |
 
 ## 4. Decisions made, don't re-litigate
 
@@ -87,7 +89,6 @@ Things a refresh pass should touch. Confirm the facts with the user where marked
   Branch-deploy URL unknown.
 - `dist/` is gitignored and stale (July); rebuild before judging anything from it.
 - New project logos: nothing to do, the white plate in `HorizontalCard.astro` handles contrast.
-- `README.md` still says "no `/en/` legal pages exist yet" — keep it true or update it with #6.
 - No dark mode; `data-theme="light"` is static in `BaseLayout.astro`.
 
 ## 7. How to verify

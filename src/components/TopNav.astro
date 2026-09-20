@@ -3,8 +3,6 @@ import Logo from "./Logo.astro";
 import LanguageToggle from "./LanguageToggle.astro";
 import { getLocale, useTranslations, localizedHref } from "../lib/i18n";
 
-const { germanOnly = false } = Astro.props;
-
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 
@@ -50,7 +48,7 @@ const ctaHref = isActive(localizedHref("/", locale)) ? "#kontakt" : "mailto:mark
         }
       </ul>
 
-      <LanguageToggle class="btn-sm" germanOnly={germanOnly} />
+      <LanguageToggle class="btn-sm" />
 
       <a class="btn btn-primary btn-sm hidden md:inline-flex" href={ctaHref}>{t("nav.cta")}</a>
 
