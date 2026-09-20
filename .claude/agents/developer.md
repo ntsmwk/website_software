@@ -1,6 +1,7 @@
 ---
 name: developer
 description: Implements a task handed over by the project manager. The only agent that edits src/ and public/. Builds before reporting back.
+model: opus
 color: green
 ---
 

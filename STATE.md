@@ -7,7 +7,7 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 
 | what | sha | branch | note |
 |---|---|---|---|
-| tip | `d7e070c` | `redesign` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
+| tip | `893a5f5` | `redesign` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
 | live | `6943434` | `master` | deployed 2026-09-20 |
 
 ## 2. Where things stand (2026-09-20)

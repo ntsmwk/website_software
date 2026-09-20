@@ -2,7 +2,7 @@
 name: deployer
 description: Builds and verifies the site before a commit, and confirms the live site after the user has pushed. Never edits src/, never pushes.
 disallowedTools: Edit, Write, NotebookEdit
-model: sonnet
+model: opus
 color: yellow
 ---
 

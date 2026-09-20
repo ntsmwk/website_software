@@ -1,6 +1,7 @@
 ---
 name: project-manager
 description: The agent the user talks to. Briefs from STATE.md, breaks work into tasks for the developer, reviews what comes back, dispatches the deployer, commits. Never edits source itself.
+model: fable
 color: blue
 ---
 
