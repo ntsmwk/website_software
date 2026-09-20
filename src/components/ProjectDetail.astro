@@ -49,11 +49,14 @@ const hostname = project.url ? new URL(project.url).hostname.replace(/^www\./, "
 
     {
       project.highlights && (
-        <ul class="mt-6 list-disc space-y-1 pl-5">
-          {project.highlights.map((item) => (
-            <li>{l(item)}</li>
-          ))}
-        </ul>
+        <>
+          <h2 class="mt-8 text-xl">{t("project.highlights")}</h2>
+          <ul class="mt-3 list-disc space-y-1 pl-5">
+            {project.highlights.map((item) => (
+              <li>{l(item)}</li>
+            ))}
+          </ul>
+        </>
       )
     }
 
@@ -62,6 +65,14 @@ const hostname = project.url ? new URL(project.url).hostname.replace(/^www\./, "
         <dt class="text-sm text-base-content/60">{t("project.role")}</dt>
         <dd>{l(project.role)}</dd>
       </div>
+      {
+        project.duration && (
+          <div>
+            <dt class="text-sm text-base-content/60">{t("project.duration")}</dt>
+            <dd>{l(project.duration)}</dd>
+          </div>
+        )
+      }
       <div>
         <dt class="text-sm text-base-content/60">{t("project.industry")}</dt>
         <dd>{l(project.badge)}</dd>

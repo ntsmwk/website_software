@@ -7,8 +7,8 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 
 | what | sha | branch | note |
 |---|---|---|---|
-| tip | `ac6655d` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
-| live | `ac6655d` | `master` | deployed 2026-09-20, sixth deploy: light-only shell with top nav (Option A step 1) |
+| tip | `12294c7` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
+| live | `12294c7` | `master` | deployed 2026-09-20, seventh deploy: home one-pager + project detail pages |
 
 ## 2. Where things stand (2026-09-20)
 
@@ -47,6 +47,7 @@ Move a row, don't add a second one for the same subject.
 | 13 | Option A transformation, step 1: light-only theme, fonts, top-nav shell | ✅ | 2026-09-20 |
 | 14 | Option A transformation, step 2: home page as one-pager (hero, logos, services, cases, about, contact) | ✅ | 2026-09-20, shipped with draft copy; outcome lines still empty (see §5) |
 | 15 | Project detail pages, cards link internally, external link on the detail page | ✅ | 2026-09-20; highlights/outcome fields exist but are empty |
+| 16 | Project data enriched from the CV: durations, highlights, BRZ correction; trailing-slash links | ✅ | 2026-09-20 |
 
 ## 4. Decisions made, don't re-litigate
 
@@ -70,8 +71,6 @@ Things a refresh pass should touch. Confirm the facts with the user where marked
 
 | where | what | ask user? |
 |---|---|---|
-| `src/data/clients.ts`, `projects.ts` | SDG client is Bundesrechenzentrum (brz.at) per CV, site says Bundeskanzleramt | no, CV is authoritative |
-| `src/data/projects.ts` | durations/highlights per project available in the CV extract, not yet in the data | no |
 | `src/data/technologies.ts` | "Frameworks" category mixes Jira/Confluence/UML/C4/Agile/Git/Docker; Git uses the GitLab logo | yes |
 | `src/pages/imprint.astro` | "Zuletzt aktualisiert: 10.02.25"; verify address/phone/UID still current | yes |
 | `src/data/projects.ts` | outcome lines for the three featured projects are empty; the Ergebnis line renders only when set | yes |
