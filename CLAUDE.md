@@ -17,10 +17,10 @@ Then, on demand only:
 
 ## Facts that are not derivable from the code
 
-- **`git push origin master` deploys to production** (Netlify, production branch `master`; other branches deploy nothing). It triggers an automatic deploy of
-  weissenbek.at. Never push without the user's explicit word in that moment, even in auto mode. The
-  `deployer` agent is the only one that pushes. Local commits are fine.
-- `redesign` is the working branch. `master` is what is live.
+- **`git push origin master` deploys to production** (Netlify, production branch `master`, live within
+  ~20 s; other branches deploy nothing). **The user pushes, agents never do**, even in auto mode.
+- Work happens directly on `master`. Commit automatically after every finished feature, one commit
+  per feature, without asking. The push is the user's manual gate.
 - Content is data, not markup: `src/data/projects.ts`, `src/data/technologies.ts`, chrome strings in
   `src/i18n/ui.ts`. Every text field is `{ de, en }`. German is authoritative for legal pages.
 - English routes under `src/pages/en/` are thin re-exports; the page component reads
@@ -42,8 +42,8 @@ Then, on demand only:
 ## Team
 
 Three agents in `.claude/agents/`: `project-manager` (talks to the user, breaks work down, reviews,
-commits), `developer` (the only editor of `src/` and `public/`), `deployer` (builds, verifies,
-merges to `master` and pushes on the user's explicit word, records what is live). Start a session by
+commits), `developer` (the only editor of `src/` and `public/`), `deployer` (builds and verifies
+before a commit, confirms the live site after the user pushes, records what is live). Start a session by
 addressing the project manager; it briefs from `STATE.md`.
 
 ## Style

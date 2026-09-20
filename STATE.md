@@ -7,13 +7,14 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 
 | what | sha | branch | note |
 |---|---|---|---|
-| tip | `6943434` | `redesign` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
-| live | `6943434` | `master` | deployed 2026-09-20; `master` == `redesign` at that point |
+| tip | `09457b5` | `redesign` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
+| live | `6943434` | `master` | deployed 2026-09-20 |
 
 ## 2. Where things stand (2026-09-20)
 
 The redesign away from the stock Astrofy template is 5 of 6 phases done and **live since 2026-09-20**
-(`master` fast-forwarded to `redesign`). Work continues on `redesign`; each merge to `master` deploys. Details of the finished phases live in `docs/archive/handoff-2026-07.md` (frozen).
+(`master` fast-forwarded to `redesign`). Work continues directly on `master`, one commit per feature;
+the user pushes, and each push deploys. `redesign` is left behind at `09457b5` and can be deleted. Details of the finished phases live in `docs/archive/handoff-2026-07.md` (frozen).
 
 | phase | status |
 |---|---|

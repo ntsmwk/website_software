@@ -8,9 +8,7 @@
       "Bash(pnpm astro *)"
     ],
     "ask": [
-      "Bash(git push*)",
-      "Bash(git merge*)",
-      "Bash(git checkout master*)"
+      "Bash(git push*)"
     ]
   }
 }
