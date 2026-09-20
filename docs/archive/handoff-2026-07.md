@@ -1,3 +1,5 @@
+> **Frozen archive** (moved from root `HANDOFF.md` on 2026-09-20). Current state lives in `STATE.md`. Do not append here.
+
 # Redesign handoff
 
 Status as of 2026-07-17. Everything below is on the local `redesign`
