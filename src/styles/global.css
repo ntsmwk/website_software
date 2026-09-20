@@ -1,5 +1,6 @@
 @import '@fontsource-variable/inter';
 @import '@fontsource-variable/jetbrains-mono';
+@import '@fontsource-variable/fraunces';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,12 +9,12 @@
     body {
         @apply font-sans;
     }
+    h1,
+    h2 {
+        @apply font-serif font-normal tracking-tight;
+    }
 }
 
 .time-line-container>div:last-child .education__time>.education__line {
     display: none;
-}
-
-.text-glow {
-    text-shadow: 0 0 16px rgba(45, 226, 230, 0.45);
 }

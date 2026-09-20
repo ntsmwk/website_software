@@ -17,14 +17,14 @@ const Wrapper = url ? "a" : "div";
 <div
   class:list={[
     "rounded bg-base-100",
-    url && "hover:shadow-glow-sm transition ease-in-out hover:scale-[102%]",
+    url && "transition-colors hover:bg-base-200",
   ]}
 >
   <Wrapper href={url} target={url ? target : undefined}>
     <div class="hero-content flex-col md:flex-row">
       {
         img && (
-          <div class="shrink-0 w-full md:w-[13rem] h-[6.5rem] rounded bg-white p-4 flex items-center justify-center">
+          <div class="shrink-0 w-full md:w-[13rem] h-[6.5rem] rounded border border-base-300 bg-white p-4 flex items-center justify-center">
             <Image
               src={img}
               width={750}
@@ -37,9 +37,9 @@ const Wrapper = url ? "a" : "div";
         )
       }
       <div class="grow w-full">
-        <h2 class="text-xl font-bold">
+        <h2 class="text-xl">
           {title}
-          {badge && <span class="badge badge-secondary mx-2">{badge}</span>}
+          {badge && <span class="badge badge-secondary mx-2 font-sans">{badge}</span>}
         </h2>
         {role && <p class="text-lg font-normal text-base-content/70">{role}</p>}
         <p class="py-1">{desc}</p>

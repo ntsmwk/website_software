@@ -6,14 +6,33 @@ const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 ---
 
-<footer class="footer footer-center block mb-5 pt-10">
-  <div class="pb-2">
-    &copy; {today.getFullYear()} Weißenbek Software e.U.
-  </div>
+<footer class="mt-16 border-t border-base-300">
+  <div
+    class="mx-auto grid max-w-[1040px] gap-4 px-5 py-8 text-sm text-base-content/70 md:grid-cols-3 md:px-9"
+  >
+    <div>&copy; {today.getFullYear()} Weißenbek Software e.U.</div>
 
-  <span class="flex flex-row justify-center gap-4">
-    <a href="/imprint">{t("footer.imprint")}</a>
-    <a href="/privacy">{t("footer.privacy")}</a>
-  </span>
+    <div class="flex gap-4 md:justify-center">
+      <a href="/imprint" class="link-hover link">{t("footer.imprint")}</a>
+      <a href="/privacy" class="link-hover link">{t("footer.privacy")}</a>
+    </div>
+
+    <div class="flex items-center gap-4 md:justify-end">
+      <a
+        href="https://www.linkedin.com/in/markus-wei%C3%9Fenbek-322060157"
+        target="_blank"
+        aria-label="LinkedIn"
+        title="LinkedIn"
+        class="hover:text-base-content"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: currentColor;">
+          <circle cx="4.983" cy="5.009" r="2.188"></circle>
+          <path
+            d="M9.237 8.855v12.139h3.769v-6.003c0-1.584.298-3.118 2.262-3.118 1.937 0 1.961 1.811 1.961 3.218v5.904H21v-6.657c0-3.27-.704-5.783-4.526-5.783-1.835 0-3.065 1.007-3.568 1.96h-.051v-1.66H9.237zm-6.142 0H6.87v12.139H3.095z"
+          ></path>
+        </svg>
+      </a>
+      <a href="mailto:markus@weissenbek.at" class="link-hover link">markus@weissenbek.at</a>
+    </div>
+  </div>
 </footer>
-<style></style>

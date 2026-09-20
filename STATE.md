@@ -7,7 +7,7 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 
 | what | sha | branch | note |
 |---|---|---|---|
-| tip | `837f9a5` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
+| tip | `b7e8d8b` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
 | live | `837f9a5` | `master` | deployed 2026-09-20, fifth deploy: dark-mode polish, Claude, dead link removed, WebP images |
 
 ## 2. Where things stand (2026-09-20)
@@ -44,17 +44,24 @@ Move a row, don't add a second one for the same subject.
 | 10 | Remove `README_old.md` (original Astrofy README) | ⬜ | trivial, ask first |
 | 11 | Dark-mode polish: theme-aware logo, uniform icon tiles and logo plates, text contrast | ✅ | 2026-09-20. Portfolio Assistent link removed, site is down. Claude added under KI-Werkzeuge |
 | 12 | Image compression: webp, icons ≤256 px, profile 300 px | ✅ | 2026-09-20 |
+| 13 | Option A transformation, step 1: light-only theme, fonts, top-nav shell | ✅ | 2026-09-20 |
+| 14 | Option A transformation, step 2: home page as one-pager (hero, logos, services, cases, about, contact) | ⬜ | needs positioning sentence + outcome lines from the user; ship with drafts, iron out after |
 
 ## 4. Decisions made, don't re-litigate
 
 - Scope: Home, Projects, Technologies, Contact, plus a real CV page. Services and Blog are gone.
-- Visual: dark-first, cyan accent (`#2de2e6` dark / `#0e7c86` light), sharp 0.25rem corners, glow
+- Visual (decided 2026-09-20, supersedes the July dark-first call): **Option A "Editorial one-pager"**,
+  light only, no dark mode. Warm off-white ground, ink text, teal accent `#0e7c86`, Fraunces serif for
+  headings, Inter body, JetBrains Mono for stacks. Top nav instead of the sidebar. Home carries the
+  whole story (positioning hero, client logos, services, 3 case studies, about, contact); Projekte and
+  Technologien stay as secondary pages. Options page: https://claude.ai/artifact/4xXgWzKcypqwbye9nQBvuu
   hover, Inter + JetBrains Mono. Light theme fully designed, toggle persists to `localStorage`.
 - Language: real routes (`/` German, `/en/` English) for SEO, not a client-side swap.
 - Data shape: per-field `{ de, en }` objects in `src/data/*.ts`, not content collections, not separate
   locale files.
 - Education section: explicitly deferred by the user on 2026-07-17. Don't chase it, don't stub it.
 - No test suite. Verification is build + eyes.
+- Dark mode removed (2026-09-20, user decision). Do not re-add a theme toggle.
 
 ## 5. Stale-data audit (2026-09-20, from reading the source)
 
@@ -70,6 +77,9 @@ Things a refresh pass should touch. Confirm the facts with the user where marked
 
 ## 6. Traps ⚠️
 
+- **pnpm version.** The lockfile is v9 but the PATH `pnpm` is 8.15.4. `pnpm install`/`pnpm add` with v8
+  rewrites the lockfile to v6 and re-resolves everything (bumped `@astrojs/sitemap` to an Astro-5 release,
+  broke the build). Use `npx pnpm@9 add …` for dependency changes; `pnpm build`/`pnpm preview` are fine.
 - Host is **Netlify**, production branch `master`. Pushing `redesign` (2026-09-20, `73db9ae`) deployed
   nothing: live site unchanged after 3 min, no GitHub status or deployment posted (Netlify posts none
   for this repo, not even on `master`). Only a push to `master` deploys, and it is live within ~20 s.
@@ -77,19 +87,18 @@ Things a refresh pass should touch. Confirm the facts with the user where marked
 - `dist/` is gitignored and stale (July); rebuild before judging anything from it.
 - New project logos: nothing to do, the white plate in `HorizontalCard.astro` handles contrast.
 - `README.md` still says "no `/en/` legal pages exist yet" — keep it true or update it with #6.
-- View transitions drop `<html data-theme>` on navigation; `BaseHead.astro` re-applies it in an
-  `astro:before-swap` listener. Any future attribute set on `<html>` by JS needs the same treatment.
+- No dark mode; `data-theme="light"` is static in `BaseLayout.astro`.
 
 ## 7. How to verify
 
 ```bash
-pnpm install
+npx pnpm@9 install           # only if node_modules is missing; see §6 pnpm trap
 pnpm build && pnpm preview   # or pnpm dev
 ```
 
-Check `/`, `/en/`, `/projects/`, `/en/projects/`, `/technologies/`, `/en/technologies/`,
-`/imprint/`, `/privacy/`, both themes (toggle in sidebar footer / mobile header), and a phone-width
-viewport for the drawer nav.
+Check `/`, `/en/`, `/projects/`, `/en/projects/`, `/technologies/`, `/en/technologies/`, `/imprint/`,
+`/privacy/`, and a phone-width viewport for the collapsed top nav. Screenshots via the playwright setup
+in the scratchpad (`shots.js`, `@playwright/test` from the ebu-testing-kit's node_modules).
 
 ## 8. Who owns what
 

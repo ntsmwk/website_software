@@ -57,11 +57,11 @@ The Impressum and Datenschutzerklärung pages are German-only for now
 
 ## Theming
 
-Two daisyUI themes (`dark`, `light`) are defined in `tailwind.config.cjs`
-— dark is the default. `src/components/ThemeToggle.astro` flips
-`document.documentElement.dataset.theme` and persists the choice to
-`localStorage`; `BaseHead.astro` applies it synchronously before first
-paint to avoid a flash of the wrong theme.
+One daisyUI theme, `light`, defined in `tailwind.config.cjs` (warm off-white
+ground, ink text, teal accent). `<html data-theme="light">` is set statically
+in `BaseLayout.astro`; there is no dark mode and no toggle. Headings use
+Fraunces (serif), body Inter, stacks and tags JetBrains Mono, all self-hosted
+via `@fontsource-variable/*` imports in `src/styles/global.css`.
 
 ## Project structure
 
@@ -70,11 +70,11 @@ src/
 ├── pages/                  # index, projects, technologies, imprint, privacy, 404 (_cv is an unrouted scaffold)
 │   └── en/                 # thin re-exports for the English routes
 ├── layouts/
-│   └── BaseLayout.astro    # drawer shell: Header (mobile) / SideBar (desktop) / Footer
+│   └── BaseLayout.astro    # TopNav / main / Footer
 ├── components/
 │   ├── HorizontalCard.astro, RoundIcon.astro, TimeLine.astro
-│   ├── ThemeToggle.astro, LanguageToggle.astro
-│   └── SideBar*.astro, Header.astro, Footer.astro, BaseHead.astro
+│   ├── Logo.astro, LanguageToggle.astro
+│   └── TopNav.astro, Footer.astro, BaseHead.astro
 ├── data/
 │   ├── projects.ts, technologies.ts   # bilingual content
 ├── i18n/

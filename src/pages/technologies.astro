@@ -8,13 +8,13 @@ const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 ---
 
-<BaseLayout pageTitle={t("technologies.title")} sideBarActiveItemID="technologies">
-  <h1 class="text-3xl w-full font-bold mb-5">{t("technologies.title")}</h1>
+<BaseLayout pageTitle={t("technologies.title")}>
+  <h1 class="text-3xl w-full mb-5">{t("technologies.title")}</h1>
 
   {
     technologyCategories.map((category) => (
       <>
-        <h2 class="text-2xl w-full font-bold mb-5 mt-5">{category.name[locale]}</h2>
+        <h2 class="text-2xl w-full mb-5 mt-5">{category.name[locale]}</h2>
         <div class="flex flex-row flex-wrap">
           {category.items.map((item) => (
             <RoundIcon name={item.name} img={item.img} format={item.format} url={item.url} />

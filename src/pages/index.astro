@@ -34,9 +34,9 @@ const coreTechnologies = coreTechnologyNames
   .filter((item): item is (typeof allTechItems)[number] => Boolean(item));
 ---
 
-<BaseLayout sideBarActiveItemID="home">
+<BaseLayout>
   <div class="mt-5">
-    <h1 class="text-5xl font-bold">DI Markus Weißenbek</h1>
+    <h1 class="text-5xl">DI Markus Weißenbek</h1>
     <p class="text-3xl py-3 font-bold">{t("site.tagline")}</p>
     <div class="py-2">
       <div class="text-lg">
@@ -48,7 +48,7 @@ const coreTechnologies = coreTechnologyNames
   </div>
 
   <div class="mt-12">
-    <h2 class="text-3xl w-full font-bold mb-2">{t("home.latestProjects")}</h2>
+    <h2 class="text-3xl w-full mb-2">{t("home.latestProjects")}</h2>
   </div>
 
   {
@@ -66,13 +66,13 @@ const coreTechnologies = coreTechnologyNames
   }
   <div class="flex justify-end mt-4">
     <a
-      class="btn btn-lg btn-primary shadow-glow-sm"
+      class="btn btn-lg btn-primary"
       href={localizedHref("/projects", locale)}>{t("home.allProjects")}</a
     >
   </div>
 
   <div class="mt-12">
-    <h2 class="text-3xl w-full font-bold mb-2 mt-12">{t("home.coreTechnologies")}</h2>
+    <h2 class="text-3xl w-full mb-2 mt-12">{t("home.coreTechnologies")}</h2>
   </div>
 
   <div class="flex flex-row flex-wrap">
@@ -85,7 +85,7 @@ const coreTechnologies = coreTechnologyNames
 
   <div class="flex justify-end mt-4">
     <a
-      class="btn btn-lg btn-primary shadow-glow-sm"
+      class="btn btn-lg btn-primary"
       href={localizedHref("/technologies", locale)}>{t("home.allTechnologies")}</a
     >
   </div>

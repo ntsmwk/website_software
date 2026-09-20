@@ -1,0 +1,80 @@
+---
+import Logo from "./Logo.astro";
+import LanguageToggle from "./LanguageToggle.astro";
+import { getLocale, useTranslations, localizedHref } from "../lib/i18n";
+
+const { germanOnly = false } = Astro.props;
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+
+const links = [
+  { href: localizedHref("/", locale), label: t("nav.home") },
+  { href: localizedHref("/projects", locale), label: t("nav.projects") },
+  { href: localizedHref("/technologies", locale), label: t("nav.technologies") },
+];
+
+const normalize = (path: string) => path.replace(/\/$/, "") || "/";
+const current = normalize(Astro.url.pathname);
+const isActive = (href: string) => normalize(href) === current;
+---
+
+<header class="border-b border-base-300 bg-base-100">
+  <nav class="mx-auto flex h-16 min-w-0 max-w-[1040px] items-center justify-between gap-3 px-5 md:px-9">
+    <a href={localizedHref("/", locale)} class="shrink" aria-label={t("nav.home")}>
+      <Logo />
+    </a>
+
+    <div class="flex items-center gap-1 md:gap-2">
+      <ul class="hidden items-center gap-1 md:flex">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                aria-current={isActive(link.href) ? "page" : undefined}
+                class:list={[
+                  "block border-b-2 px-3 py-2 text-sm transition-colors",
+                  isActive(link.href)
+                    ? "border-primary text-base-content"
+                    : "border-transparent text-base-content/70 hover:text-base-content",
+                ]}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <LanguageToggle class="btn-sm" germanOnly={germanOnly} />
+
+      <a class="btn btn-primary btn-sm hidden md:inline-flex" href="mailto:markus@weissenbek.at">{t("nav.cta")}</a>
+
+      <div class="dropdown dropdown-end md:hidden">
+        <button type="button" tabindex="0" class="btn btn-ghost btn-square btn-sm" aria-label={t("nav.menu")}>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-5 w-5 stroke-current">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+        <ul
+          tabindex="0"
+          class="menu dropdown-content menu-sm z-30 mt-2 w-48 rounded border border-base-300 bg-base-100 p-2 shadow"
+        >
+          {
+            links.map((link) => (
+              <li>
+                <a href={link.href} class:list={[isActive(link.href) && "active"]}>
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+          <li class="mt-2">
+            <a class="btn btn-primary btn-sm w-full" href="mailto:markus@weissenbek.at">{t("nav.cta")}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

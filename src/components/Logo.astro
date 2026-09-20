@@ -2,11 +2,11 @@
 import logo from "../../public/logo.svg?raw";
 ---
 
-<span class="logo" role="img" aria-label="Weißenbek Software" set:html={logo} />
+<span class="logo block w-[120px] sm:w-[140px] md:w-[180px]" role="img" aria-label="Weißenbek Software" set:html={logo} />
 
 <style>
   .logo > :global(svg) {
-    width: 250px;
+    width: 100%;
     height: auto;
   }
   /* wordmark paths ship without a fill; the spark keeps its own */
