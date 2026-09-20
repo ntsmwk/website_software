@@ -1,6 +1,7 @@
 @import '@fontsource-variable/inter';
 @import '@fontsource-variable/jetbrains-mono';
 @import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/fraunces/wght-italic.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

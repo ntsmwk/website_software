@@ -10,6 +10,8 @@ export interface Project {
   role: LocalizedText;
   badge: LocalizedText;
   url?: string;
+  outcome?: LocalizedText;
+  highlights?: LocalizedText[];
   image: string;
   tags: string[];
 }

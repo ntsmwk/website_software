@@ -7,8 +7,8 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 
 | what | sha | branch | note |
 |---|---|---|---|
-| tip | `b7e8d8b` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
-| live | `837f9a5` | `master` | deployed 2026-09-20, fifth deploy: dark-mode polish, Claude, dead link removed, WebP images |
+| tip | `ac6655d` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
+| live | `ac6655d` | `master` | deployed 2026-09-20, sixth deploy: light-only shell with top nav (Option A step 1) |
 
 ## 2. Where things stand (2026-09-20)
 
@@ -35,8 +35,8 @@ Move a row, don't add a second one for the same subject.
 | 1 | Session setup: `CLAUDE.md`, `STATE.md`, agents | ✅ | 2026-09-20 |
 | 2 | `/cv/` is built and publicly reachable with Lorem ipsum | ✅ | 2026-09-20: route no longer emitted (`src/pages/_cv.astro` keeps the scaffold, underscore excludes it from routing); same pass fixed hreflang/toggle on German-only legal pages, localized `<title>`s and meta description, `/en` logo links, bilingual 404, footer gap |
 | 3 | Data refresh: stale/wrong text (see §5) | ⏳ | typos fixed 2026-09-20; remaining rows need the user |
-| 4 | CV page content | ⛔ | needs dates per project/employer, and the timeline shape decision (per project vs per employer). Education is out of scope by decision. |
-| 5 | Certifications on the CV page | ⛔ | list or drop the section |
+| 4 | CV page content | ⬜ | unblocked 2026-09-20: Markus put his CV at `docs/resume (1).pdf` (gitignored, personal data, public repo). Extraction with all dates in `docs/cv-facts.md`; timeline per employer, projects link to detail pages. Education may now be included, it is in the CV. |
+| 5 | Certifications on the CV page | ⬜ | none in the CV; drop the section |
 | 6 | Legal pages in English | ⛔ | German-authoritative + EN disclaimer, German-only, or full translation. Legal call, don't invent wording. |
 | 7 | Downloadable CV PDF | ⛔ | wanted or not |
 | 8 | Sign-off on accent `#2de2e6` / Inter + JetBrains Mono | ⛔ | nothing pushed back yet |
@@ -45,7 +45,8 @@ Move a row, don't add a second one for the same subject.
 | 11 | Dark-mode polish: theme-aware logo, uniform icon tiles and logo plates, text contrast | ✅ | 2026-09-20. Portfolio Assistent link removed, site is down. Claude added under KI-Werkzeuge |
 | 12 | Image compression: webp, icons ≤256 px, profile 300 px | ✅ | 2026-09-20 |
 | 13 | Option A transformation, step 1: light-only theme, fonts, top-nav shell | ✅ | 2026-09-20 |
-| 14 | Option A transformation, step 2: home page as one-pager (hero, logos, services, cases, about, contact) | ⬜ | needs positioning sentence + outcome lines from the user; ship with drafts, iron out after |
+| 14 | Option A transformation, step 2: home page as one-pager (hero, logos, services, cases, about, contact) | ✅ | 2026-09-20, shipped with draft copy; outcome lines still empty (see §5) |
+| 15 | Project detail pages, cards link internally, external link on the detail page | ✅ | 2026-09-20; highlights/outcome fields exist but are empty |
 
 ## 4. Decisions made, don't re-litigate
 
@@ -59,7 +60,7 @@ Move a row, don't add a second one for the same subject.
 - Language: real routes (`/` German, `/en/` English) for SEO, not a client-side swap.
 - Data shape: per-field `{ de, en }` objects in `src/data/*.ts`, not content collections, not separate
   locale files.
-- Education section: explicitly deferred by the user on 2026-07-17. Don't chase it, don't stub it.
+- Education: was deferred in July; superseded 2026-09-20 by the CV upload, may be built from it.
 - No test suite. Verification is build + eyes.
 - Dark mode removed (2026-09-20, user decision). Do not re-add a theme toggle.
 
@@ -69,10 +70,11 @@ Things a refresh pass should touch. Confirm the facts with the user where marked
 
 | where | what | ask user? |
 |---|---|---|
-| `src/pages/index.astro` | "Seit mehr als 10 Jahren" — check the number is still right | yes |
-| `src/data/projects.ts` | no dates on any project; `featuredProjectIds` may not be the latest work | yes |
+| `src/data/clients.ts`, `projects.ts` | SDG client is Bundesrechenzentrum (brz.at) per CV, site says Bundeskanzleramt | no, CV is authoritative |
+| `src/data/projects.ts` | durations/highlights per project available in the CV extract, not yet in the data | no |
 | `src/data/technologies.ts` | "Frameworks" category mixes Jira/Confluence/UML/C4/Agile/Git/Docker; Git uses the GitLab logo | yes |
 | `src/pages/imprint.astro` | "Zuletzt aktualisiert: 10.02.25"; verify address/phone/UID still current | yes |
+| `src/data/projects.ts` | outcome lines for the three featured projects are empty; the Ergebnis line renders only when set | yes |
 | `README_old.md` | leftover template README | yes |
 
 ## 6. Traps ⚠️

@@ -7,20 +7,12 @@ const {
   badge,
   role,
   tags,
-  target = "_blank",
 } = Astro.props;
 import { Image } from "astro:assets";
-
-const Wrapper = url ? "a" : "div";
 ---
 
-<div
-  class:list={[
-    "rounded bg-base-100",
-    url && "transition-colors hover:bg-base-200",
-  ]}
->
-  <Wrapper href={url} target={url ? target : undefined}>
+<div class="rounded bg-base-100 transition-colors hover:bg-base-200">
+  <a href={url}>
     <div class="hero-content flex-col md:flex-row">
       {
         img && (
@@ -53,5 +45,5 @@ const Wrapper = url ? "a" : "div";
         </div>
       </div>
     </div>
-  </Wrapper>
+  </a>
 </div>

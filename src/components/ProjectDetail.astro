@@ -1,0 +1,92 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { projects, type Project } from "../data/projects";
+import { getLocale, useTranslations, localizedHref, localize } from "../lib/i18n";
+import type { LocalizedText } from "../data/projects";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const l = (field: LocalizedText) => localize(field, locale);
+
+const index = projects.findIndex((p) => p.id === project.id);
+const previous = index > 0 ? projects[index - 1] : undefined;
+const next = index < projects.length - 1 ? projects[index + 1] : undefined;
+
+const detailHref = (p: Project) => localizedHref(`/projects/${p.id}/`, locale);
+const hostname = project.url ? new URL(project.url).hostname.replace(/^www\./, "") : undefined;
+---
+
+<BaseLayout pageTitle={l(project.title)} description={l(project.description)}>
+  <div class="max-w-[720px]">
+    <a class="link-hover link text-sm text-base-content/70" href={localizedHref("/projects", locale)}
+      >{t("project.back")}</a
+    >
+
+    <p class="mb-4 mt-8 font-mono text-xs uppercase tracking-widest text-base-content/60">
+      {l(project.badge)} · {l(project.role)}
+    </p>
+    <h1 class="break-words text-4xl leading-[1.12] md:text-5xl">{l(project.title)}</h1>
+
+    <div class="mt-6 inline-flex h-24 items-center justify-center rounded border border-base-300 bg-white px-6 py-4">
+      <img src={project.image} alt={l(project.title)} class="h-full w-auto max-w-[16rem] object-contain" />
+    </div>
+
+    <p class="mt-8 text-lg">{l(project.description)}</p>
+
+    {
+      project.outcome && (
+        <p class="mt-6">
+          <span class="font-semibold">{t("project.outcome")}:</span> {l(project.outcome)}
+        </p>
+      )
+    }
+
+    {
+      project.highlights && (
+        <ul class="mt-6 list-disc space-y-1 pl-5">
+          {project.highlights.map((item) => (
+            <li>{l(item)}</li>
+          ))}
+        </ul>
+      )
+    }
+
+    <dl class="mt-10 grid gap-x-8 gap-y-4 border-t border-base-300 pt-6 md:grid-cols-2">
+      <div>
+        <dt class="text-sm text-base-content/60">{t("project.role")}</dt>
+        <dd>{l(project.role)}</dd>
+      </div>
+      <div>
+        <dt class="text-sm text-base-content/60">{t("project.industry")}</dt>
+        <dd>{l(project.badge)}</dd>
+      </div>
+      <div>
+        <dt class="text-sm text-base-content/60">{t("project.technologies")}</dt>
+        <dd class="font-mono text-sm">{project.tags.join(" · ")}</dd>
+      </div>
+      {
+        project.url && (
+          <div>
+            <dt class="text-sm text-base-content/60">{t("project.website")}</dt>
+            <dd>
+              <a class="link link-primary" href={project.url} target="_blank" rel="noopener">
+                {hostname} ↗
+              </a>
+            </dd>
+          </div>
+        )
+      }
+    </dl>
+
+    <nav class="mt-12 flex flex-col gap-3 border-t border-base-300 pt-6 sm:flex-row sm:justify-between">
+      {previous ? <a class="link-hover link" href={detailHref(previous)}>← {l(previous.title)}</a> : <span />}
+      {next && <a class="link-hover link sm:text-right" href={detailHref(next)}>{l(next.title)} →</a>}
+    </nav>
+  </div>
+</BaseLayout>

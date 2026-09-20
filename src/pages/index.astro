@@ -1,93 +1,139 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HorizontalCard from "../components/HorizontalCard.astro";
-import RoundIcon from "../components/RoundIcon.astro";
+import { home } from "../data/home";
+import { services } from "../data/services";
+import { clients } from "../data/clients";
 import { projects, featuredProjectIds } from "../data/projects";
-import { technologyCategories, coreTechnologyNames } from "../data/technologies";
-import { getLocale, useTranslations, localizedHref } from "../lib/i18n";
+import { coreTechnologyNames } from "../data/technologies";
+import { getLocale, useTranslations, localizedHref, localize } from "../lib/i18n";
+import type { LocalizedText } from "../data/projects";
 
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
-
-const heroCopy = {
-  de: {
-    bioHtml:
-      "Selbstständiger <strong>Software Architekt</strong> und <strong>Senior Software Engineer</strong> im Web-Bereich. Seit mehr als 10 Jahren beschäftige ich mich damit, komplexe Geschäftsprozesse zu konzeptionieren, technisch umzusetzen und langfristig zu betreuen. Meine Kern-Kompetenz liegt vor allem in der Kombination von Technik, Wirtschaft und Team.",
-    philosophyHtml:
-      "Meine Grundphilosophie im Leben wie auch im Beruf ist klassisch oberösterreichisch &rdquo;Geht ned, gibts ned!&rdquo;.",
-  },
-  en: {
-    bioHtml:
-      "Independent <strong>Software Architect</strong> and <strong>Senior Software Engineer</strong> specializing in web technologies. For more than 10 years, I&rsquo;ve been designing complex business processes, implementing them technically, and maintaining them over the long term. My core strength lies in combining technology, business, and team.",
-    philosophyHtml:
-      "My guiding philosophy, in life as in work, is classic Upper Austrian: &rdquo;Geht ned, gibts ned!&rdquo; &mdash; roughly, &ldquo;there&rsquo;s no such thing as can&rsquo;t.&rdquo;",
-  },
-}[locale];
+const l = (field: LocalizedText) => localize(field, locale);
 
 const featuredProjects = featuredProjectIds
   .map((id) => projects.find((project) => project.id === id))
   .filter((project): project is (typeof projects)[number] => Boolean(project));
 
-const allTechItems = technologyCategories.flatMap((category) => category.items);
-const coreTechnologies = coreTechnologyNames
-  .map((name) => allTechItems.find((item) => item.name === name))
-  .filter((item): item is (typeof allTechItems)[number] => Boolean(item));
+const detailHref = (id: string) => localizedHref(`/projects/${id}/`, locale);
+
+const mail = "mailto:markus@weissenbek.at";
+const linkedIn = "https://www.linkedin.com/in/markus-wei%C3%9Fenbek-322060157";
+const eyebrowClass = "mb-4 font-mono text-xs uppercase tracking-widest text-base-content/60";
 ---
 
 <BaseLayout>
-  <div class="mt-5">
-    <h1 class="text-5xl">DI Markus Weißenbek</h1>
-    <p class="text-3xl py-3 font-bold">{t("site.tagline")}</p>
-    <div class="py-2">
-      <div class="text-lg">
-        <p class="py-2" set:html={heroCopy.bioHtml} />
-        <div class="divider my-2"></div>
-        <p class="py-2" set:html={heroCopy.philosophyHtml} />
+  <div class="space-y-20 md:space-y-24">
+    <section>
+      <p class={eyebrowClass}>{l(home.eyebrow)}</p>
+      <h1 class="max-w-[20ch] text-4xl leading-[1.12] md:text-5xl" set:html={l(home.heroHtml)} />
+      <p class="mt-6 max-w-[56ch] text-lg text-base-content/80">{l(home.intro)}</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a class="btn btn-primary" href={mail}>{t("nav.cta")}</a>
+        <a class="btn btn-outline" href={localizedHref("/projects", locale)}>{l(home.seeProjects)}</a>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="mt-12">
-    <h2 class="text-3xl w-full mb-2">{t("home.latestProjects")}</h2>
-  </div>
+    <section>
+      <p class={eyebrowClass}>{l(home.trustedBy)}</p>
+      <div class="flex flex-wrap items-center gap-x-10 gap-y-5">
+        {
+          clients.map((client) => {
+            return (
+              <a
+                href={detailHref(client.projectId)}
+                title={client.name}
+                class="grayscale opacity-70 transition hover:opacity-100 hover:grayscale-0"
+              >
+                {client.logo ? (
+                  <img src={client.logo} alt={client.name} class="h-7 w-auto md:h-8" loading="lazy" />
+                ) : (
+                  <span class="font-semibold tracking-tight">{client.name}</span>
+                )}
+              </a>
+            );
+          })
+        }
+      </div>
+    </section>
 
-  {
-    featuredProjects.map((project, index) => (
-      <>
-        <HorizontalCard
-          title={project.title[locale]}
-          img={project.image}
-          desc={project.description[locale]}
-          url={project.url}
+    <section>
+      <h2 class="mb-6 text-3xl">{l(home.servicesTitle)}</h2>
+      <div class="grid gap-8 md:grid-cols-3">
+        {
+          services.map((service) => (
+            <div>
+              <h3 class="font-semibold">{l(service.title)}</h3>
+              <p class="mt-2 text-base-content/75">{l(service.description)}</p>
+            </div>
+          ))
+        }
+      </div>
+      <p class="mt-10 font-mono text-sm text-base-content/70">
+        {l(home.stackLabel)} {coreTechnologyNames.join(" · ")}
+        <a class="link link-primary ml-2 whitespace-nowrap" href={localizedHref("/technologies", locale)}
+          >{l(home.allTechnologies)}</a
+        >
+      </p>
+    </section>
+
+    <section>
+      <h2 class="mb-6 text-3xl">{l(home.projectsTitle)}</h2>
+      {
+        featuredProjects.map((project) => (
+          <article class="grid gap-6 border-t border-base-300 py-6 md:grid-cols-[180px_1fr]">
+            <div>
+              <h3 class="font-semibold">
+                <a class="link-hover" href={detailHref(project.id)}>{l(project.title)}</a>
+              </h3>
+              <p class="text-sm text-base-content/60">{l(project.badge)}</p>
+            </div>
+            <div class="space-y-2">
+              <p>{l(project.description)}</p>
+              <p class="text-sm">
+                {l(home.roleLabel)} {l(project.role)}
+              </p>
+              {project.outcome && (
+                <p class="text-sm">
+                  {l(home.outcomeLabel)} {l(project.outcome)}
+                </p>
+              )}
+              <p class="font-mono text-xs text-base-content/60">{project.tags.join(" · ")}</p>
+            </div>
+          </article>
+        ))
+      }
+      <div class="flex justify-end border-t border-base-300 pt-4">
+        <a class="link link-primary" href={localizedHref("/projects", locale)}>{l(home.allProjects)}</a>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="mb-6 text-3xl">{l(home.aboutTitle)}</h2>
+      <div class="grid items-start gap-8 md:grid-cols-[160px_1fr]">
+        <img
+          src="/profile.webp"
+          alt="Markus Weißenbek"
+          width="160"
+          height="160"
+          class="h-auto w-[160px] rounded border border-base-300"
         />
-        {index < featuredProjects.length - 1 && <div class="divider my-0" />}
-      </>
-    ))
-  }
-  <div class="flex justify-end mt-4">
-    <a
-      class="btn btn-lg btn-primary"
-      href={localizedHref("/projects", locale)}>{t("home.allProjects")}</a
-    >
-  </div>
+        <div class="space-y-4">
+          <p set:html={l(home.bioHtml)} />
+          <blockquote class="border-l-2 border-primary pl-4 italic text-base-content/80" set:html={l(home.philosophyHtml)} />
+        </div>
+      </div>
+    </section>
 
-  <div class="mt-12">
-    <h2 class="text-3xl w-full mb-2 mt-12">{t("home.coreTechnologies")}</h2>
+    <section id="kontakt">
+      <h2 class="mb-6 text-3xl">{l(home.contactTitle)}</h2>
+      <p class="max-w-[56ch] text-lg">{l(home.contactText)}</p>
+      <div class="mt-6 flex flex-wrap items-center gap-4">
+        <a class="btn btn-primary" href={mail}>{t("nav.cta")}</a>
+        <a class="link link-primary" href={mail}>markus@weissenbek.at</a>
+        <a class="link-hover link" href={linkedIn} target="_blank">LinkedIn</a>
+      </div>
+    </section>
   </div>
-
-  <div class="flex flex-row flex-wrap">
-    {
-      coreTechnologies.map((tech) => (
-        <RoundIcon name={tech.name} img={tech.img} format={tech.format} url={tech.url} />
-      ))
-    }
-  </div>
-
-  <div class="flex justify-end mt-4">
-    <a
-      class="btn btn-lg btn-primary"
-      href={localizedHref("/technologies", locale)}>{t("home.allTechnologies")}</a
-    >
-  </div>
-
 </BaseLayout>

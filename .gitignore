@@ -20,3 +20,5 @@ pnpm-debug.log*
 
 # Astro
 .astro/
+# personal documents, never commit (public repo)
+docs/*.pdf

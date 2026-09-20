@@ -17,6 +17,8 @@ const links = [
 const normalize = (path: string) => path.replace(/\/$/, "") || "/";
 const current = normalize(Astro.url.pathname);
 const isActive = (href: string) => normalize(href) === current;
+// on the home page the CTA scrolls to the contact section instead of opening mail
+const ctaHref = isActive(localizedHref("/", locale)) ? "#kontakt" : "mailto:markus@weissenbek.at";
 ---
 
 <header class="border-b border-base-300 bg-base-100">
@@ -49,7 +51,7 @@ const isActive = (href: string) => normalize(href) === current;
 
       <LanguageToggle class="btn-sm" germanOnly={germanOnly} />
 
-      <a class="btn btn-primary btn-sm hidden md:inline-flex" href="mailto:markus@weissenbek.at">{t("nav.cta")}</a>
+      <a class="btn btn-primary btn-sm hidden md:inline-flex" href={ctaHref}>{t("nav.cta")}</a>
 
       <div class="dropdown dropdown-end md:hidden">
         <button type="button" tabindex="0" class="btn btn-ghost btn-square btn-sm" aria-label={t("nav.menu")}>
@@ -71,7 +73,7 @@ const isActive = (href: string) => normalize(href) === current;
             ))
           }
           <li class="mt-2">
-            <a class="btn btn-primary btn-sm w-full" href="mailto:markus@weissenbek.at">{t("nav.cta")}</a>
+            <a class="btn btn-primary btn-sm w-full" href={ctaHref}>{t("nav.cta")}</a>
           </li>
         </ul>
       </div>
