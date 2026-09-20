@@ -32,22 +32,20 @@ import { Image } from "astro:assets";
         )
       }
       <div class="grow w-full">
-        <h1 class="text-xl font-bold">
+        <h2 class="text-xl font-bold">
           {title}
-          {badge && <div class="badge badge-secondary mx-2">{badge}</div>}
-        </h1>
-        <p>
-          {role && <p class="text-lg font-thin">{role}</p>}
-          <p class="py-1 text-1xl">{desc}</p>
-          <div class="card-actions justify-end">
-            {
-              tags &&
-                tags.map((tag) => (
-                  <span class="badge badge-outline font-mono">{tag}</span>
-                ))
-            }
-          </div>
-        </p>
+          {badge && <span class="badge badge-secondary mx-2">{badge}</span>}
+        </h2>
+        {role && <p class="text-lg font-thin">{role}</p>}
+        <p class="py-1">{desc}</p>
+        <div class="card-actions justify-end">
+          {
+            tags &&
+              tags.map((tag) => (
+                <span class="badge badge-outline font-mono">{tag}</span>
+              ))
+          }
+        </div>
       </div>
     </div>
   </a>

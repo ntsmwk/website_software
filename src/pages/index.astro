@@ -36,19 +36,19 @@ const coreTechnologies = coreTechnologyNames
 
 <BaseLayout sideBarActiveItemID="home">
   <div class="mt-5">
-    <div class="text-5xl font-bold">DI Markus Weißenbek</div>
-    <div class="text-3xl py-3 font-bold">{t("site.tagline")}</div>
+    <h1 class="text-5xl font-bold">DI Markus Weißenbek</h1>
+    <p class="text-3xl py-3 font-bold">{t("site.tagline")}</p>
     <div class="py-2">
-      <text class="text-lg">
+      <div class="text-lg">
         <p class="text-justify py-2" set:html={heroCopy.bioHtml} />
         <div class="divider my-2"></div>
         <p class="text-justify py-2" set:html={heroCopy.philosophyHtml} />
-      </text>
+      </div>
     </div>
   </div>
 
   <div class="mt-12">
-    <div class="text-3xl w-full font-bold mb-2">{t("home.latestProjects")}</div>
+    <h2 class="text-3xl w-full font-bold mb-2">{t("home.latestProjects")}</h2>
   </div>
 
   {
@@ -72,7 +72,7 @@ const coreTechnologies = coreTechnologyNames
   </div>
 
   <div class="mt-12">
-    <div class="text-3xl w-full font-bold mb-2 mt-12">{t("home.coreTechnologies")}</div>
+    <h2 class="text-3xl w-full font-bold mb-2 mt-12">{t("home.coreTechnologies")}</h2>
   </div>
 
   <div class="flex flex-row flex-wrap">

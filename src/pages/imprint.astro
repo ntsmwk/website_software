@@ -7,11 +7,11 @@ const t = useTranslations(getLocale(Astro.currentLocale));
 
 <BaseLayout pageTitle={t("footer.imprint")} sideBarActiveItemID="imprint" germanOnly>
   <div>
-    <div class="text-3xl w-full font-bold mb-5">Impressum</div>
-    <div class="text-xl w-full font-bold mb-5">
+    <h1 class="text-3xl w-full font-bold mb-5">Impressum</h1>
+    <h2 class="text-xl w-full font-bold mb-5">
       Information gemäß §5 ECG, §14 UGB, §63 GewO und Offenlegung gemäß §25
       MedienG
-    </div>
+    </h2>
     <p>
       <strong>Firma:</strong> Weißenbek Software e.U.<br />
       <strong>Adresse:</strong> Mayrhoferstraße 11, 4030 Linz, Österreich
@@ -33,7 +33,7 @@ const t = useTranslations(getLocale(Astro.currentLocale));
       <strong>Mitglied bei:</strong> WKO Linz<br />
       <strong>Berufsrecht:</strong> Gewerbeordnung (<a
         href="https://www.ris.bka.gv.at"
-        class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+        class="link link-primary"
         >https://www.ris.bka.gv.at</a
       >)
     </p>
@@ -42,9 +42,9 @@ const t = useTranslations(getLocale(Astro.currentLocale));
       />
       <strong>Verleihungsstaat:</strong> Österreich
     </p>
-    <div class="text-xl w-full font-bold mb-2 mt-5">
+    <h2 class="text-xl w-full font-bold mb-2 mt-5">
       Haftung für Inhalte dieser Website
-    </div>
+    </h2>
     <p>
       Wir entwickeln die Inhalte dieser Webseite ständig weiter und bemühen uns
       korrekte und aktuelle Informationen bereitzustellen. Leider können wir
@@ -65,9 +65,9 @@ const t = useTranslations(getLocale(Astro.currentLocale));
       wir Sie uns umgehend zu kontaktieren, damit wir die rechtswidrigen Inhalte
       entfernen können. Sie finden die Kontaktdaten im Impressum.
     </p>
-    <div class="text-xl w-full font-bold mb-2 mt-5">
+    <h2 class="text-xl w-full font-bold mb-2 mt-5">
       Haftung für Links auf dieser Webseite
-    </div>
+    </h2>
     <p>
       Unsere Webseite enthält Links zu anderen Webseiten für deren Inhalt wir
       nicht verantwortlich sind. Haftung für verlinkte Websites besteht für uns
@@ -79,7 +79,7 @@ const t = useTranslations(getLocale(Astro.currentLocale));
       Wenn Ihnen rechtswidrige Links auf unserer Website auffallen, bitte wir
       Sie uns zu kontaktieren. Sie finden die Kontaktdaten im Impressum.
     </p>
-    <div class="text-xl w-full font-bold mb-2 mt-5">Urheberrechtshinweis</div>
+    <h2 class="text-xl w-full font-bold mb-2 mt-5">Urheberrechtshinweis</h2>
     <p>
       Alle Inhalte dieser Webseite (Bilder, Fotos, Texte, Videos) unterliegen
       dem Urheberrecht. Bitte fragen Sie uns bevor Sie die Inhalte dieser
