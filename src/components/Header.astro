@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import Logo from "./Logo.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import LanguageToggle from "./LanguageToggle.astro";
 import { getLocale, localizedHref } from "../lib/i18n";
@@ -29,14 +29,7 @@ const locale = getLocale(Astro.currentLocale);
     </div>
     <div class="navbar-center">
       <a class="btn btn-ghost normal-case text-xl" href={localizedHref("/", locale)}>
-        <Image
-          class=""
-          format="png"
-          width={250}
-          height={100}
-          src="/logo.svg"
-          alt="Logo"
-        />
+        <Logo />
       </a>
     </div>
     <div class="navbar-end">

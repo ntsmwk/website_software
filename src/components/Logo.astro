@@ -1,0 +1,16 @@
+---
+import logo from "../../public/logo.svg?raw";
+---
+
+<span class="logo" role="img" aria-label="Weißenbek Software" set:html={logo} />
+
+<style>
+  .logo > :global(svg) {
+    width: 250px;
+    height: auto;
+  }
+  /* wordmark paths ship without a fill; the spark keeps its own */
+  .logo :global(svg path:not([fill])) {
+    fill: currentColor;
+  }
+</style>

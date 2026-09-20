@@ -10,23 +10,28 @@ const {
   target = "_blank",
 } = Astro.props;
 import { Image } from "astro:assets";
+
+const Wrapper = url ? "a" : "div";
 ---
 
 <div
-  class="rounded-lg bg-base-100 hover:shadow-glow-sm transition ease-in-out hover:scale-[102%]"
+  class:list={[
+    "rounded bg-base-100",
+    url && "hover:shadow-glow-sm transition ease-in-out hover:scale-[102%]",
+  ]}
 >
-  <a href={url} target={target}>
+  <Wrapper href={url} target={url ? target : undefined}>
     <div class="hero-content flex-col md:flex-row">
       {
         img && (
-          <div class="shrink-0 w-full md:w-[13rem] rounded-lg bg-white p-4 flex items-center justify-center">
+          <div class="shrink-0 w-full md:w-[13rem] h-[6.5rem] rounded bg-white p-4 flex items-center justify-center">
             <Image
               src={img}
               width={750}
               height={422}
               format="webp"
               alt={title}
-              class="max-w-full h-auto"
+              class="h-full w-auto max-w-full object-contain"
             />
           </div>
         )
@@ -36,17 +41,17 @@ import { Image } from "astro:assets";
           {title}
           {badge && <span class="badge badge-secondary mx-2">{badge}</span>}
         </h2>
-        {role && <p class="text-lg font-thin">{role}</p>}
+        {role && <p class="text-lg font-normal text-base-content/70">{role}</p>}
         <p class="py-1">{desc}</p>
         <div class="card-actions justify-end">
           {
             tags &&
               tags.map((tag) => (
-                <span class="badge badge-outline font-mono">{tag}</span>
+                <span class="badge badge-outline font-mono text-base-content/80">{tag}</span>
               ))
           }
         </div>
       </div>
     </div>
-  </a>
+  </Wrapper>
 </div>

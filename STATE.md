@@ -7,7 +7,7 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 
 | what | sha | branch | note |
 |---|---|---|---|
-| tip | `bc4299e` | `redesign` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
+| tip | `1188751` | `redesign` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
 | live | `792287b` | `master` | deployed 2026-09-20, third deploy: theme persists across navigation |
 
 ## 2. Where things stand (2026-09-20)
@@ -42,6 +42,7 @@ Move a row, don't add a second one for the same subject.
 | 8 | Sign-off on accent `#2de2e6` / Inter + JetBrains Mono | ⛔ | nothing pushed back yet |
 | 9 | Merge `redesign` → `master`, push, verify live | ✅ | 2026-09-20, fast-forward to `6943434`, live within ~16 s, all 8 routes 200 in both languages |
 | 10 | Remove `README_old.md` (original Astrofy README) | ⬜ | trivial, ask first |
+| 11 | Dark-mode polish: theme-aware logo, uniform icon tiles and logo plates, text contrast | ✅ | 2026-09-20. Portfolio Assistent link removed, site is down. Claude added under KI-Werkzeuge |
 
 ## 4. Decisions made, don't re-litigate
 

@@ -62,6 +62,13 @@ export const technologyCategories: TechCategory[] = [
       { name: "Google API", img: "/technologies/google-maps.png", format: "png", url: "https://developers.google.com/maps" },
     ],
   },
+  {
+    id: "ai",
+    name: { de: "KI-Werkzeuge", en: "AI Tools" },
+    items: [
+      { name: "Claude", img: "/technologies/claude.svg", format: "svg", url: "https://claude.ai" },
+    ],
+  },
 ];
 
 export const coreTechnologyNames = [

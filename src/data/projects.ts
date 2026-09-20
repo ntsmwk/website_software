@@ -9,7 +9,7 @@ export interface Project {
   description: LocalizedText;
   role: LocalizedText;
   badge: LocalizedText;
-  url: string;
+  url?: string;
   image: string;
   tags: string[];
 }
@@ -59,7 +59,6 @@ export const projects: Project[] = [
       en: "Software Architect & Lead Developer",
     },
     badge: { de: "Immobilien", en: "Real Estate" },
-    url: "https://www.portfolio-assistent.at/",
     image: "/portfolio-assistent.png",
     tags: ["Spring Boot", "Angular", "MongoDB", "Tailwind", "OCR", "AWS"],
   },
