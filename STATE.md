@@ -7,8 +7,8 @@ Rewritten in place. Read `CLAUDE.md` for the protocol. Markup: ✅ done · ⬜ o
 
 | what | sha | branch | note |
 |---|---|---|---|
-| tip | `12294c7` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
-| live | `12294c7` | `master` | deployed 2026-09-20, seventh deploy: home one-pager + project detail pages |
+| tip | `3583272` | `master` | HEAD when this file was last rewritten; the commit carrying that rewrite is one ahead |
+| live | `3583272` | `master` | deployed 2026-09-20, eighth deploy: CV-enriched project pages, BRZ, slash links |
 
 ## 2. Where things stand (2026-09-20)
 
@@ -24,7 +24,7 @@ the user pushes, and each push deploys. The `redesign` branch is deleted locally
 | DE/EN routing via Astro i18n | ✅ `52c0f88` |
 | Housekeeping (photo, OG image, README) | ✅ `6ed3acb` |
 | Dark-mode logo fix | ✅ `d35caae` |
-| CV page | ⬜ not started, `src/pages/_cv.astro` is an unrouted Lorem-ipsum scaffold |
+| CV page | ✅ 2026-09-20, `src/pages/cv.astro` from `docs/cv-facts.md` |
 
 ## 3. Open work, in order
 
@@ -35,8 +35,8 @@ Move a row, don't add a second one for the same subject.
 | 1 | Session setup: `CLAUDE.md`, `STATE.md`, agents | ✅ | 2026-09-20 |
 | 2 | `/cv/` is built and publicly reachable with Lorem ipsum | ✅ | 2026-09-20: route no longer emitted (`src/pages/_cv.astro` keeps the scaffold, underscore excludes it from routing); same pass fixed hreflang/toggle on German-only legal pages, localized `<title>`s and meta description, `/en` logo links, bilingual 404, footer gap |
 | 3 | Data refresh: stale/wrong text (see §5) | ⏳ | typos fixed 2026-09-20; remaining rows need the user |
-| 4 | CV page content | ⬜ | unblocked 2026-09-20: Markus put his CV at `docs/resume (1).pdf` (gitignored, personal data, public repo). Extraction with all dates in `docs/cv-facts.md`; timeline per employer, projects link to detail pages. Education may now be included, it is in the CV. |
-| 5 | Certifications on the CV page | ⬜ | none in the CV; drop the section |
+| 4 | CV page content | ✅ | 2026-09-20, built from `docs/cv-facts.md`: timeline per employer, education included, projects link to the detail pages. Source PDF stays gitignored. |
+| 5 | Certifications on the CV page | ✅ | no section, none in CV |
 | 6 | Legal pages in English | ⛔ | German-authoritative + EN disclaimer, German-only, or full translation. Legal call, don't invent wording. |
 | 7 | Downloadable CV PDF | ⛔ | wanted or not |
 | 8 | Sign-off on accent `#2de2e6` / Inter + JetBrains Mono | ⛔ | nothing pushed back yet |

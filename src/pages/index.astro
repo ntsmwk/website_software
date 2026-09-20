@@ -122,6 +122,9 @@ const eyebrowClass = "mb-4 font-mono text-xs uppercase tracking-widest text-base
         <div class="space-y-4">
           <p set:html={l(home.bioHtml)} />
           <blockquote class="border-l-2 border-primary pl-4 italic text-base-content/80" set:html={l(home.philosophyHtml)} />
+          <p>
+            <a class="link link-primary" href={localizedHref("/cv", locale)}>{l(home.seeCv)}</a>
+          </p>
         </div>
       </div>
     </section>

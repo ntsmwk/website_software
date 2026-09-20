@@ -12,6 +12,7 @@ const links = [
   { href: localizedHref("/", locale), label: t("nav.home") },
   { href: localizedHref("/projects", locale), label: t("nav.projects") },
   { href: localizedHref("/technologies", locale), label: t("nav.technologies") },
+  { href: localizedHref("/cv", locale), label: t("nav.cv") },
 ];
 
 const normalize = (path: string) => path.replace(/\/$/, "") || "/";
@@ -36,7 +37,7 @@ const ctaHref = isActive(localizedHref("/", locale)) ? "#kontakt" : "mailto:mark
                 href={link.href}
                 aria-current={isActive(link.href) ? "page" : undefined}
                 class:list={[
-                  "block border-b-2 px-3 py-2 text-sm transition-colors",
+                  "block border-b-2 px-2 py-2 text-sm transition-colors lg:px-3",
                   isActive(link.href)
                     ? "border-primary text-base-content"
                     : "border-transparent text-base-content/70 hover:text-base-content",

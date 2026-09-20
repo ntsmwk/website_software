@@ -33,6 +33,8 @@ export const home = {
     en: "My guiding philosophy, in life as in work, is classic Upper Austrian: &rdquo;Geht ned, gibts ned!&rdquo; &mdash; roughly, &ldquo;there&rsquo;s no such thing as can&rsquo;t.&rdquo;",
   },
 
+  seeCv: { de: "Zum Lebenslauf →", en: "See my CV →" },
+
   contactTitle: { de: "Kontakt", en: "Contact" },
   contactText: {
     de: "Sie planen eine neue Plattform oder wollen eine bestehende weiterentwickeln? Schreiben Sie mir, ich melde mich innerhalb eines Werktags.",

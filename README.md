@@ -36,6 +36,7 @@ typed data files:
 - `src/data/home.ts` — home page copy: hero, section labels, about, contact
 - `src/data/services.ts` — the three service columns on the home page
 - `src/data/clients.ts` — client logo row on the home page (linked via `projectId`)
+- `src/data/cv.ts` — CV page: summary, experience, education, skills
 
 Each text field is a `{ de: string, en: string }` pair. To add or edit a
 project or technology, edit these files; the Home, Projects, and
@@ -70,13 +71,13 @@ via `@fontsource-variable/*` imports in `src/styles/global.css`.
 
 ```
 src/
-├── pages/                  # index, projects, technologies, imprint, privacy, 404 (_cv is an unrouted scaffold)
+├── pages/                  # index, projects, technologies, cv, imprint, privacy, 404
 │   ├── projects/[id].astro # one detail page per project (paths from src/lib/projectPaths.ts)
 │   └── en/                 # thin re-exports for the English routes (incl. en/projects/[id].astro)
 ├── layouts/
 │   └── BaseLayout.astro    # TopNav / main / Footer
 ├── components/
-│   ├── HorizontalCard.astro, RoundIcon.astro, TimeLine.astro
+│   ├── HorizontalCard.astro, RoundIcon.astro, ProjectDetail.astro
 │   ├── Logo.astro, LanguageToggle.astro
 │   └── TopNav.astro, Footer.astro, BaseHead.astro
 ├── data/
